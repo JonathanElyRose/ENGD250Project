@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class MainFrame extends JFrame {
-	private JFrame frame = new JFrame();;	
+	private JFrame frame = new JFrame();	
 	
 	public MainFrame() {		
 		frame.setTitle("RotoScope");
@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
 		
 		frame.add(homePanel);
 		
-		//frame.setResizable(false);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
