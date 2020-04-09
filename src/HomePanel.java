@@ -73,17 +73,17 @@ public class HomePanel extends ParentPanel{
 		);
 		
 		getLayout().setVerticalGroup(
-				getLayout().createSequentialGroup()
-					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
-							.addComponent(returnComponent("logo"))
-							.addComponent(returnComponent("menu1"))
-							.addComponent(returnComponent("menu2"))
-							.addComponent(returnComponent("menu3"))
-							.addComponent(returnComponent("menu4")))
-					.addComponent(returnComponent("recentProjects"))
-					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
-							.addComponent(returnComponent("newProject"))
-							.addComponent(returnComponent("importPhotos")))
+			getLayout().createSequentialGroup()
+				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(returnComponent("logo"))
+					.addComponent(returnComponent("menu1"))
+					.addComponent(returnComponent("menu2"))
+					.addComponent(returnComponent("menu3"))
+					.addComponent(returnComponent("menu4")))
+				.addComponent(returnComponent("recentProjects"))
+				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(returnComponent("newProject"))
+					.addComponent(returnComponent("importPhotos")))
 		);
 	}
 }

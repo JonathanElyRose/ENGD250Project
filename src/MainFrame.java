@@ -11,9 +11,11 @@ public class MainFrame extends JFrame {
 		
 		ProjectsPanel projectsPanel = new ProjectsPanel();
 		
-		frame.add(projectsPanel);
+		NewProjectPanel newProjectPanel = new NewProjectPanel();
 		
-		frame.setResizable(false);
+		frame.add(newProjectPanel);
+		
+		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
