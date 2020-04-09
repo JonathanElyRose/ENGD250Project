@@ -10,6 +10,8 @@ public abstract class ParentPanel extends JPanel{
 	
 	public ParentPanel() {
 		this.setLayout(layout);
+		setupComponents();
+		setupLayout();
 	}
 	
 	public GroupLayout getLayout() {
@@ -17,11 +19,16 @@ public abstract class ParentPanel extends JPanel{
 	}
 	
 	public void addComponent(String string, JComponent component) {
-		componentMap.put(string, component);
+		this.componentMap.put(string, component);
 	}
 	
-	public JComponent getComponent(String string) {
-		return componentMap.get(string);
+	public JComponent returnComponent(String string) {
+		if(this.componentMap.containsKey(string)) {
+			return this.componentMap.get(string);
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public int getPanelScale() {

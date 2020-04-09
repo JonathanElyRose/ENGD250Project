@@ -9,7 +9,9 @@ public class MainFrame extends JFrame {
 		
 		HomePanel homePanel = new HomePanel();
 		
-		frame.add(homePanel);
+		ProjectsPanel projectsPanel = new ProjectsPanel();
+		
+		frame.add(projectsPanel);
 		
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

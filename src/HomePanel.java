@@ -11,13 +11,6 @@ import com.sun.prism.Image;
 
 //This class describes the layout of the home page and assigns ActionListeners to its buttons.
 public class HomePanel extends ParentPanel{
-	ArrayList<JComponent> components = new ArrayList<JComponent>();
-	
-	public HomePanel() {
-		super();
-		setupComponents();
-		setupLayout();
-	}
 	
 	public void setupComponents() {
 		JButton menu1 = new JButton("Menu 1");
@@ -67,30 +60,30 @@ public class HomePanel extends ParentPanel{
 		getLayout().setHorizontalGroup(
 			getLayout().createParallelGroup()
 				.addGroup(getLayout().createSequentialGroup()
-					.addComponent(getComponent("logo"))
-					.addComponent(getComponent("menu1"))
-					.addComponent(getComponent("menu2"))
-					.addComponent(getComponent("menu3"))
-					.addComponent(getComponent("menu4")))
+					.addComponent(returnComponent("logo"))
+					.addComponent(returnComponent("menu1"))
+					.addComponent(returnComponent("menu2"))
+					.addComponent(returnComponent("menu3"))
+					.addComponent(returnComponent("menu4")))
 				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
-						.addComponent(getComponent("recentProjects")))
+						.addComponent(returnComponent("recentProjects")))
 				.addGroup(getLayout().createSequentialGroup()
-					.addComponent(getComponent("newProject"))
-					.addComponent(getComponent("importPhotos")))
+					.addComponent(returnComponent("newProject"))
+					.addComponent(returnComponent("importPhotos")))
 		);
 		
 		getLayout().setVerticalGroup(
 				getLayout().createSequentialGroup()
 					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
-							.addComponent(getComponent("logo"))
-							.addComponent(getComponent("menu1"))
-							.addComponent(getComponent("menu2"))
-							.addComponent(getComponent("menu3"))
-							.addComponent(getComponent("menu4")))
-					.addComponent(getComponent("recentProjects"))
+							.addComponent(returnComponent("logo"))
+							.addComponent(returnComponent("menu1"))
+							.addComponent(returnComponent("menu2"))
+							.addComponent(returnComponent("menu3"))
+							.addComponent(returnComponent("menu4")))
+					.addComponent(returnComponent("recentProjects"))
 					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
-							.addComponent(getComponent("newProject"))
-							.addComponent(getComponent("importPhotos")))
+							.addComponent(returnComponent("newProject"))
+							.addComponent(returnComponent("importPhotos")))
 		);
 	}
 }
