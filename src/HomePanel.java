@@ -1,3 +1,7 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
@@ -11,7 +15,10 @@ import com.sun.prism.Image;
 
 //This class describes the layout of the home page and assigns ActionListeners to its buttons.
 public class HomePanel extends ParentPanel{
-	
+	public HomePanel(JFrame frame) {
+		super(frame);
+	}
+
 	public void setupComponents() {
 		JButton menu1 = new JButton("Menu 1");
 		JButton menu2 = new JButton("Menu 2");

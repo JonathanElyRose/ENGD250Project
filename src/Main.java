@@ -1,4 +1,7 @@
-//this is Liz
+/*
+ * @author Jonathan Ely.
+ */
+
 public class Main {
 
 	public Main() {

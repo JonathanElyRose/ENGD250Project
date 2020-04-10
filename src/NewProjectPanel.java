@@ -1,6 +1,14 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import javax.swing.*;
 
 public class NewProjectPanel extends ParentPanel {
+
+	public NewProjectPanel(JFrame frame) {
+		super(frame);
+	}
 
 	@Override
 	public void setupComponents() {

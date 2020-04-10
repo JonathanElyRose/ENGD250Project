@@ -1,3 +1,7 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -7,13 +11,13 @@ public class MainFrame extends JFrame {
 	public MainFrame() {		
 		frame.setTitle("RotoScope");
 		
-		HomePanel homePanel = new HomePanel();
+		HomePanel homePanel = new HomePanel(frame);
 		
-		ProjectsPanel projectsPanel = new ProjectsPanel();
+		ProjectsPanel projectsPanel = new ProjectsPanel(frame);
 		
-		NewProjectPanel newProjectPanel = new NewProjectPanel();
+		NewProjectPanel newProjectPanel = new NewProjectPanel(frame);
 		
-		frame.add(newProjectPanel);
+		frame.add(projectsPanel);
 		
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

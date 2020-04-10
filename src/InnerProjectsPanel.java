@@ -1,21 +1,32 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.*;
 import java.lang.Math;
 
 public class InnerProjectsPanel extends ParentPanel {
-	
 	private int gridX;
 	private int numProjects;
+	
+	public InnerProjectsPanel(JFrame frame) {
+		super(frame);
+	}
+
+	
 
 	@Override
 	public void setupComponents() {
-		this.numProjects = 27;
-		this.gridX = 4;
+		numProjects = 12;
+		gridX = 4;
 		for(int i = 0; i < numProjects; i++) {
 			setupLogo(i);
 		}
@@ -41,8 +52,8 @@ public class InnerProjectsPanel extends ParentPanel {
 		getLayout().setAutoCreateGaps(true);
 		getLayout().setAutoCreateContainerGaps(true);
 		
-		ParallelGroup horizontalGroup = getLayout().createParallelGroup();
-		ParallelGroup verticalGroup = getLayout().createParallelGroup();
+		ParallelGroup horizontalGroup = getLayout().createParallelGroup(GroupLayout.Alignment.CENTER);
+		ParallelGroup verticalGroup = getLayout().createParallelGroup(GroupLayout.Alignment.CENTER);
 		
 		for(int i = 0; i < numProjects; i += gridX) {
 			SequentialGroup newRow = getLayout().createSequentialGroup();
@@ -71,7 +82,7 @@ public class InnerProjectsPanel extends ParentPanel {
 	}
 	
 	public int getPanelWidth() {
-		return (gridX * 200) + 100;
+		return (gridX * 200) + (gridX * 20);
 	}
 
 }
