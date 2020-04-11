@@ -1,5 +1,5 @@
 /*
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters
  */
 
 import java.awt.Dimension;
