@@ -3,19 +3,14 @@
  */
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import com.sun.prism.Image;
+import javax.swing.*;
 
 //This class describes the layout of the home page and assigns ActionListeners to its buttons.
 public class HomePanel extends ParentPanel{
-	public HomePanel(JFrame frame) {
+	public HomePanel(MainFrame frame) {
 		super(frame);
 	}
 
@@ -55,5 +50,27 @@ public class HomePanel extends ParentPanel{
 					.addComponent(returnComponent("newProject"))
 					.addComponent(returnComponent("importPhotos")))
 		);
+	}
+
+	@Override
+	public void setupListeners() {
+		((AbstractButton) returnComponent("newProject")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showNewProjectPanel();
+			}
+		});
+		((AbstractButton) returnComponent("recentProjects")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showProjectsPanel();
+			}
+		});
+		((AbstractButton) returnComponent("importPhotos")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showImportPhotosPanel();
+			}
+		});
 	}
 }

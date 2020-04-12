@@ -3,31 +3,31 @@
  */
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class NavigationPanel extends ParentPanel {
 
-	public NavigationPanel(JFrame frame) {
+	public NavigationPanel(MainFrame frame) {
 		super(frame);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void setupComponents() {
-		// TODO Auto-generated method stub
-		JButton menu1 = new JButton("Menu 1");
-		JButton menu2 = new JButton("Menu 2");
-		JButton menu3 = new JButton("Menu 3");
-		JButton menu4 = new JButton("Menu 4");
+		JButton menu1 = new JButton("Home");
+		JButton menu2 = new JButton("Projects");
+		JButton menu3 = new JButton("Help");
+		JButton menu4 = new JButton("About");
 		
 		int panelScale = getPanelScale();
 		
@@ -58,7 +58,6 @@ public class NavigationPanel extends ParentPanel {
 
 	@Override
 	public void setupLayout() {
-		// TODO Auto-generated method stub
 		getLayout().setAutoCreateGaps(false);
 		getLayout().setAutoCreateContainerGaps(true);
 		
@@ -81,6 +80,34 @@ public class NavigationPanel extends ParentPanel {
 					.addComponent(returnComponent("menu3"))
 					.addComponent(returnComponent("menu4")))
 		);
+	}
+
+	@Override
+	public void setupListeners() {
+		((AbstractButton) returnComponent("menu1")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showHomePanel();
+			}
+		});
+		((AbstractButton) returnComponent("menu2")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showProjectsPanel();
+			}
+		});
+		((AbstractButton) returnComponent("menu3")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				//TODO: Add in HelpPanel once created
+			}
+		});
+		((AbstractButton) returnComponent("menu3")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				//TODO: Add in AboutPanel once created
+			}
+		});
 	}
 
 }

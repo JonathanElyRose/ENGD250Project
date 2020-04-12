@@ -5,27 +5,25 @@
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
-	private JFrame frame = new JFrame();
-	
-	private HomePanel homePanel = new HomePanel(frame);
-	private ProjectsPanel projectsPanel = new ProjectsPanel(frame);
-	private NewProjectPanel newProjectPanel = new NewProjectPanel(frame);
-	private NavigationPanel navigationPanel = new NavigationPanel(frame);
+	private HomePanel homePanel = new HomePanel(this);
+	private ProjectsPanel projectsPanel = new ProjectsPanel(this);
+	private NewProjectPanel newProjectPanel = new NewProjectPanel(this);
+	private NavigationPanel navigationPanel = new NavigationPanel(this);
 	
 	private JPanel outerPanel = new JPanel();
 	private JPanel currentPanel = new JPanel();
 	
 	public MainFrame() {		
-		frame.setTitle("RotoScope");
+		this.setTitle("RotoScope");
 		
 		configurePanels();
 		
-		frame.add(outerPanel);
+		this.add(outerPanel);
 		
-		frame.setResizable(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
+		this.setResizable(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+		this.setVisible(true);
 	}
 	
 	public void configurePanels() {
@@ -53,12 +51,40 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void showHomePanel() {
-		currentPanel.removeAll();
+		currentPanel.remove(0);
 		currentPanel.add(homePanel);
+		this.pack();
 	}
 	
 	public void showProjectsPanel() {
-		currentPanel.removeAll();
+		currentPanel.remove(0);
 		currentPanel.add(projectsPanel);
+		this.pack();
+	}
+	
+	public void showNewProjectPanel() {
+		currentPanel.remove(0);
+		currentPanel.add(newProjectPanel);
+		this.pack();
+	}
+	public void showImportPhotosPanel() {
+		currentPanel.remove(0);
+		//TODO: Add ImportPhotosPanel class
+		this.pack();
+	}
+	public void showSelectPhotosPanel() {
+		currentPanel.remove(0);
+		//TODO: Add SelectPhotosPanel class
+		this.pack();
+	}
+	public void showHelpPanel() {
+		currentPanel.remove(0);
+		//TODO: Add HelpPanel class
+		this.pack();
+	}
+	public void showAboutPanel() {
+		currentPanel.remove(0);
+		//TODO: Add AboutPanel class
+		this.pack();
 	}
 }
