@@ -56,37 +56,42 @@ public class MainFrame extends JFrame {
 		currentPanel.remove(0);
 		currentPanel.add(homePanel);
 		this.pack();
+		this.repaint();
 	}
 	
 	public void showProjectsPanel() {
 		currentPanel.remove(0);
 		currentPanel.add(projectsPanel);
 		this.pack();
+		this.repaint();
 	}
 	
 	public void showNewProjectPanel() {
 		currentPanel.remove(0);
 		currentPanel.add(newProjectPanel);
 		this.pack();
+		this.repaint();
 	}
 	public void showImportDialog() {
 		new ImportDialog();
 		this.pack();
+		this.repaint();
 	}
 	public void showSelectPhotosPanel() {
 		//TODO: Add SelectPhotosPanel class
 		this.pack();
+		this.repaint();
 	}
 	public void showHelpPanel() {
-		//TODO: Add HelpPanel class
-		currentPanel.remove(0);
+		currentPanel.removeAll();
 		currentPanel.add(helpPanel);
 		this.pack();
+		this.repaint();
 	}
 	public void showAboutPanel() {
-		//TODO: Add AboutPanel class
-		currentPanel.remove(0);
+		currentPanel.removeAll();
 		currentPanel.add(aboutPanel);
 		this.pack();
+		this.repaint();
 	}
 }
