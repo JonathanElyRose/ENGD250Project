@@ -67,8 +67,8 @@ public class MainFrame extends JFrame {
 		currentPanel.add(newProjectPanel);
 		this.pack();
 	}
-	public void showImportPhotosPanel() {
-		//TODO: Add ImportPhotosPanel class
+	public void showImportDialog() {
+		new ImportDialog();
 		this.pack();
 	}
 	public void showSelectPhotosPanel() {

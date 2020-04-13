@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD
- * @author Jonathan Ely, Emmi Schwitters
-=======
  * @author Jonathan Ely and Emmi Schwitters.
->>>>>>> branch 'master' of https://github.com/JonathanElyRose/ENGD250Project.git
  */
 
 import java.awt.Dimension;
@@ -73,7 +69,7 @@ public class HomePanel extends ParentPanel{
 		((AbstractButton) returnComponent("importPhotos")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				getFrame().showImportPhotosPanel();
+				getFrame().showImportDialog();
 			}
 		});
 	}
