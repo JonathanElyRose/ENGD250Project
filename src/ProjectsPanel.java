@@ -5,12 +5,11 @@
 import java.awt.Dimension;
 
 import javax.swing.GroupLayout;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 public class ProjectsPanel extends ParentPanel {
 
-	public ProjectsPanel(JFrame frame) {
+	public ProjectsPanel(MainFrame frame) {
 		super(frame);
 	}
 
@@ -38,6 +37,12 @@ public class ProjectsPanel extends ParentPanel {
 				getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
 					.addComponent(returnComponent("scrollPane"))
 		);
+	}
+
+	@Override
+	public void setupListeners() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

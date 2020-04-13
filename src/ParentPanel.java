@@ -5,19 +5,19 @@
 import java.util.HashMap;
 import javax.swing.GroupLayout;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public abstract class ParentPanel extends JPanel{
 	private GroupLayout layout = new GroupLayout(this);
-	private JFrame frame;
+	private MainFrame frame;
 	private HashMap<String, JComponent> componentMap = new HashMap<String, JComponent>();
 	private int panelScale = 50;
 	
-	public ParentPanel(JFrame frame) {
+	public ParentPanel(MainFrame frame) {
 		this.setLayout(layout);
 		this.frame = frame;
 		setupComponents();
+		setupListeners();
 		setupLayout();
 	}
 	
@@ -46,11 +46,13 @@ public abstract class ParentPanel extends JPanel{
 		this.panelScale = scale;
 	}
 	
-	public JFrame getFrame() {
+	public MainFrame getFrame() {
 		return this.frame;
 	}
 	
 	public abstract void setupComponents();
 	
 	public abstract void setupLayout();
+	
+	public abstract void setupListeners();
 }

@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class NewProjectPanel extends ParentPanel {
 
-	public NewProjectPanel(JFrame frame) {
+	public NewProjectPanel(MainFrame frame) {
 		super(frame);
 	}
 
@@ -57,6 +57,12 @@ public class NewProjectPanel extends ParentPanel {
 						.addComponent(returnComponent("cancel"))
 						.addComponent(returnComponent("createProject"))))	
 		);
+	}
+
+	@Override
+	public void setupListeners() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
