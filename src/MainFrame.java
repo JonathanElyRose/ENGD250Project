@@ -1,5 +1,5 @@
 /*
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters.
  */
 
 import javax.swing.*;
@@ -9,6 +9,8 @@ public class MainFrame extends JFrame {
 	private ProjectsPanel projectsPanel = new ProjectsPanel(this);
 	private NewProjectPanel newProjectPanel = new NewProjectPanel(this);
 	private NavigationPanel navigationPanel = new NavigationPanel(this);
+	private HelpPanel helpPanel = new HelpPanel(this);
+	private AboutPanel aboutPanel = new AboutPanel(this);
 	
 	private JPanel outerPanel = new JPanel();
 	private JPanel currentPanel = new JPanel();
@@ -77,10 +79,14 @@ public class MainFrame extends JFrame {
 	}
 	public void showHelpPanel() {
 		//TODO: Add HelpPanel class
+		currentPanel.remove(0);
+		currentPanel.add(helpPanel);
 		this.pack();
 	}
 	public void showAboutPanel() {
 		//TODO: Add AboutPanel class
+		currentPanel.remove(0);
+		currentPanel.add(aboutPanel);
 		this.pack();
 	}
 }

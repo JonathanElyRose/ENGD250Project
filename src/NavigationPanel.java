@@ -104,12 +104,14 @@ public class NavigationPanel extends ParentPanel {
 		{
 			public void actionPerformed(ActionEvent e) {
 				//TODO: Add in HelpPanel once created
+				getFrame().showHelpPanel();
 			}
 		});
-		((AbstractButton) returnComponent("menu3")).addActionListener(new ActionListener()
+		((AbstractButton) returnComponent("menu4")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
 				//TODO: Add in AboutPanel once created
+				getFrame().showAboutPanel();
 			}
 		});
 	}
