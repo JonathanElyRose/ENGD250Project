@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD
- * @author Emmi Schwitters.
-=======
  * @author Jonathan Ely and Emmi Schwitters.
->>>>>>> branch 'master' of https://github.com/JonathanElyRose/ENGD250Project.git
  */
 
 import java.awt.Dimension;
