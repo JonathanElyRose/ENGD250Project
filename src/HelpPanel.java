@@ -15,9 +15,9 @@ public class HelpPanel extends ParentPanel {
 	@Override
 	public void setupComponents() {
 		// TODO Auto-generated method stub
-		JLabel title = new JLabel("HELP");
+		JLabel helpTitle = new JLabel("HELP");
 		
-		addComponent("title", title);
+		addComponent("helpTitle", helpTitle);
 
 	}
 
@@ -30,14 +30,14 @@ public class HelpPanel extends ParentPanel {
 		getLayout().setHorizontalGroup(
 				getLayout().createParallelGroup(GroupLayout.Alignment.LEADING)
 					.addGroup(getLayout().createSequentialGroup()
-							.addComponent(returnComponent("title")))
+							.addComponent(returnComponent("helpTitle")))
 		);
 		
 		getLayout().setVerticalGroup(
 				getLayout().createParallelGroup(GroupLayout.Alignment.LEADING)
 					.addGroup(getLayout().createSequentialGroup()
 						.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
-								.addComponent(returnComponent("title"))))
+								.addComponent(returnComponent("helpTitle"))))
 		);
 
 	}
