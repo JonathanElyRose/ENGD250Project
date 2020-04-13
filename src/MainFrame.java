@@ -68,22 +68,18 @@ public class MainFrame extends JFrame {
 		this.pack();
 	}
 	public void showImportPhotosPanel() {
-		currentPanel.remove(0);
 		//TODO: Add ImportPhotosPanel class
 		this.pack();
 	}
 	public void showSelectPhotosPanel() {
-		currentPanel.remove(0);
 		//TODO: Add SelectPhotosPanel class
 		this.pack();
 	}
 	public void showHelpPanel() {
-		currentPanel.remove(0);
 		//TODO: Add HelpPanel class
 		this.pack();
 	}
 	public void showAboutPanel() {
-		currentPanel.remove(0);
 		//TODO: Add AboutPanel class
 		this.pack();
 	}
