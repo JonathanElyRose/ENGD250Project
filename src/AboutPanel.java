@@ -2,7 +2,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 /*
- * @author Emmi Schwitters.
+ * @author Emmi Schwitters, Liz Stutz.
  */
 
 public class AboutPanel extends ParentPanel {

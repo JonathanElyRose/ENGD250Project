@@ -4,7 +4,7 @@ import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 /*
- * @author Emmi Schwitters.
+ * @author Emmi Schwitters, Liz Stutz.
  */
 
 public class HelpPanel extends ParentPanel {
