@@ -2,6 +2,9 @@
  * @author Jonathan Ely.
  */
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class NewProjectPanel extends ParentPanel {
@@ -61,7 +64,12 @@ public class NewProjectPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
+		((AbstractButton) returnComponent("createProject")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showEditorPanel();
+			}
+		});
 		
 	}
 

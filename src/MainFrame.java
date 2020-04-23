@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
 	private NavigationPanel navigationPanel = new NavigationPanel(this);
 	private HelpPanel helpPanel = new HelpPanel(this);
 	private AboutPanel aboutPanel = new AboutPanel(this);
+	private EditorPanel editorPanel = new EditorPanel(this);
 	
 	private JPanel outerPanel = new JPanel();
 	private JPanel currentPanel = new JPanel();
@@ -91,6 +92,12 @@ public class MainFrame extends JFrame {
 	public void showAboutPanel() {
 		currentPanel.removeAll();
 		currentPanel.add(aboutPanel);
+		this.pack();
+		this.repaint();
+	}
+	public void showEditorPanel() {
+		currentPanel.removeAll();
+		currentPanel.add(editorPanel);
 		this.pack();
 		this.repaint();
 	}
