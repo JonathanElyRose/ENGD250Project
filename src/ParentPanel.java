@@ -34,6 +34,7 @@ public abstract class ParentPanel extends JPanel{
 			return this.componentMap.get(string);
 		}
 		else {
+			System.out.println("Warning in ParentPanel: Component '" + string + "' does not exist within componentMap of " + Thread.currentThread().getStackTrace()[2].getClassName());
 			return null;
 		}
 	}

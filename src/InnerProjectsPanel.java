@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.*;
 import java.lang.Math;
@@ -84,12 +85,8 @@ public class InnerProjectsPanel extends ParentPanel {
 		return (gridX * 200) + (gridX * 20);
 	}
 
-
-
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

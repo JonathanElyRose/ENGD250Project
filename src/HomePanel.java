@@ -16,17 +16,13 @@ public class HomePanel extends ParentPanel{
 
 	public void setupComponents() {
 		JButton newProject = new JButton("New Project");
-		JButton recentProjects = new JButton("Recent Projects");
 		JButton importPhotos = new JButton("Import Photos");
 		
 		int panelScale = getPanelScale();
-		
-		recentProjects.setMinimumSize(new Dimension(20 * panelScale, 4 * panelScale));
 		newProject.setMinimumSize(new Dimension(10 * panelScale, 4 * panelScale));
 		importPhotos.setMinimumSize(new Dimension(10 * panelScale, 4 * panelScale));
 		
 		addComponent("newProject", newProject);
-		addComponent("recentProjects", recentProjects);
 		addComponent("importPhotos", importPhotos);
 	}
 	
@@ -36,19 +32,15 @@ public class HomePanel extends ParentPanel{
 		
 		getLayout().setHorizontalGroup(
 			getLayout().createParallelGroup()
-				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
-						.addComponent(returnComponent("recentProjects")))
 				.addGroup(getLayout().createSequentialGroup()
 					.addComponent(returnComponent("newProject"))
 					.addComponent(returnComponent("importPhotos")))
 		);
 		
 		getLayout().setVerticalGroup(
-			getLayout().createSequentialGroup()
-				.addComponent(returnComponent("recentProjects"))
-				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
+				getLayout().createParallelGroup(GroupLayout.Alignment.BASELINE)
 					.addComponent(returnComponent("newProject"))
-					.addComponent(returnComponent("importPhotos")))
+					.addComponent(returnComponent("importPhotos"))
 		);
 	}
 
@@ -58,12 +50,6 @@ public class HomePanel extends ParentPanel{
 		{
 			public void actionPerformed(ActionEvent e) {
 				getFrame().showNewProjectPanel();
-			}
-		});
-		((AbstractButton) returnComponent("recentProjects")).addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) {
-				getFrame().showProjectsPanel();
 			}
 		});
 		((AbstractButton) returnComponent("importPhotos")).addActionListener(new ActionListener()
