@@ -1,8 +1,8 @@
-import java.io.IOException;
-
 /*
  * @author Jonathan Ely.
  */
+
+import java.io.IOException;
 
 public class Main {
 
@@ -17,17 +17,17 @@ public class Main {
 				} catch (IOException e) {
 					System.out.println("Fatal Error in Main: launchFileManager failed in startup. Program unable to continue");
 				}
-            	launchProjectManager();
-            	launchGUI();
+            	launchGUI(launchProjectManager());
             }
             private void launchFileManager() throws IOException {
         		new FileManager();
         	}
-            private void launchProjectManager() {
-            	new ProjectManager();
+            private ProjectManager launchProjectManager() {
+            	ProjectManager projectManager = new ProjectManager();
+            	return projectManager;
             }
-            private void launchGUI() {
-            	new MainFrame();
+            private void launchGUI(ProjectManager projectManager) {
+            	new MainFrame(projectManager);
             }
             
         });

@@ -3,6 +3,7 @@ import javax.swing.*;
 import javax.swing.filechooser.*;
 
 public class ImportDialog {
+	private File[] selectedImages;
 
 	public ImportDialog() {
 		// create an object of JFileChooser class 
@@ -16,10 +17,15 @@ public class ImportDialog {
 
         if (r == JFileChooser.APPROVE_OPTION) { 
             // get the selected files 
-            File files[] = j.getSelectedFiles();
-            
-            System.out.println(files.length);
+            selectedImages = j.getSelectedFiles();
         }
+        else {
+        	selectedImages = null;
+        }
+	}
+	
+	public File[] getSelectedImages() {
+		return this.selectedImages;
 	}
 
 }

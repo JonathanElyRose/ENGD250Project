@@ -1,3 +1,7 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import java.nio.file.Path;
 import java.util.HashMap;
 
@@ -8,11 +12,13 @@ public class Project {
 	private String thumbnailPath;
 	private HashMap<String, String> imagesMap = new HashMap<String, String>();
 
-	public Project(String filePath) {
-		this.filePath = filePath;
+	public Project() {
 	}
 	public String getFilePath() {
 		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 	public String getThumbnailPath() {
 		return thumbnailPath;
@@ -40,5 +46,8 @@ public class Project {
 	}
 	public HashMap<String, String> getImagesMap() {
 		return this.imagesMap;
+	}
+	public void setImagesMap(HashMap<String, String> map) {
+		this.imagesMap = map;
 	}
 }

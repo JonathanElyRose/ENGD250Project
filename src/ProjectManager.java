@@ -1,3 +1,7 @@
+/*
+ * @author Jonathan Ely.
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,17 +33,19 @@ public class ProjectManager {
 	public void makeProjectFile(Project project) {
 		String fileName = project.getName().replaceAll(" ", "_");
 		try {
-			File projectFile = new File("src/projects/" + fileName + ".proj");
+			File projectFile = new File(System.getProperty("user.dir") + "/src/data/projects/" + fileName + ".proj");
 			if (projectFile.createNewFile()) {
 				try {
 					FileWriter fileWriter = new FileWriter(projectFile.getPath());
 					PrintWriter writer = new PrintWriter(fileWriter);
-					writer.print("name:" + project.getName());
-					writer.print("date:" + project.getDate());
-					writer.print("thumbnailPath:" + project.getThumbnailPath());
+					writer.println("name:" + project.getName());
+					writer.println("date:" + project.getDate());
+					writer.println("thumbnailPath:" + project.getThumbnailPath());
 					for(String id : project.getImagesMap().keySet()) {
-						writer.print("image:" + id + ":" +  project.getImagePath(id));
+						writer.println("image:" + id + ":" +  project.getImagePath(id));
 					}
+					writer.close();
+					fileWriter.close();
 				}
 				catch(IOException e) {
 					System.out.println("Warning in ProjectManager: Could not write to .proj file '" + fileName + "'. Project file assumed to be empty or corrupted");
@@ -57,7 +63,8 @@ public class ProjectManager {
 	}
 	
 	public void makeProjectInstance(File file) {
-		Project project = new Project(file.getPath());
+		Project project = new Project();
+		project.setFilePath(file.getPath());
 		
 		BufferedReader reader;
 		try {
@@ -67,12 +74,14 @@ public class ProjectManager {
 				handleTag(project, currentLine);
 				currentLine = reader.readLine();
 			}
+			reader.close();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		projectMap.put(project.getName(), project);
+		
 	}
 	
 	public void handleTag(Project project, String currentLine) {

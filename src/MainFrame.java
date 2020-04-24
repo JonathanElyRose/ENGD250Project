@@ -5,6 +5,8 @@
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
+	private ProjectManager projectManager;
+	
 	private HomePanel homePanel = new HomePanel(this);
 	private ProjectsPanel projectsPanel = new ProjectsPanel(this);
 	private NewProjectPanel newProjectPanel = new NewProjectPanel(this);
@@ -16,7 +18,9 @@ public class MainFrame extends JFrame {
 	private JPanel outerPanel = new JPanel();
 	private JPanel currentPanel = new JPanel();
 	
-	public MainFrame() {		
+	public MainFrame(ProjectManager projectManager) {
+		this.projectManager = projectManager;
+		
 		this.setTitle("RotoScope");
 		
 		configurePanels();
@@ -27,6 +31,10 @@ public class MainFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		this.setVisible(true);
+	}
+	
+	public ProjectManager getProjectManager() {
+		return this.projectManager;
 	}
 	
 	public void configurePanels() {
