@@ -1,14 +1,9 @@
-/*
- * @author Jonathan Ely and Emmi Schwitters.
- */
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
@@ -16,7 +11,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+/**
+ * A panel for displaying buttons to switch between frequently used and important pages of the program. Always displayed at the top
+ * of the MainFrame
+ * 
+ * @author Jonathan Ely and Emmi Schwitters.
+ */
+
 public class NavigationPanel extends ParentPanel {
+	private static final long serialVersionUID = 1L;
 
 	public NavigationPanel(MainFrame frame) {
 		super(frame);
@@ -44,6 +47,9 @@ public class NavigationPanel extends ParentPanel {
 
 	}
 	
+	/**
+	 * Reads BufferedImage from a file into a JLabel, and adds the JLabel to the componentMap. Throws an error if unsuccessful
+	 */
 	public void setupLogo() {
 		BufferedImage logoImage;
 		try {

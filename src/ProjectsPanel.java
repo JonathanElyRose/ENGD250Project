@@ -1,13 +1,15 @@
-/*
- * @author Jonathan Ely.
- */
-
 import java.awt.Dimension;
-
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
 
+/**
+ * This panel creates InnerProjectsPanel to hold inside it, and allows scrolling features for the InnerProjectsPanel.
+ * 
+ * @author Jonathan Ely.
+ */
+
 public class ProjectsPanel extends ParentPanel {
+	static final long serialVersionUID = 1L;
 
 	public ProjectsPanel(MainFrame frame) {
 		super(frame);
@@ -41,8 +43,6 @@ public class ProjectsPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

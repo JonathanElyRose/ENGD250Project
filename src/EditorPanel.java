@@ -1,22 +1,23 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-/*
+/**
+ * This panel provides a viewing and editing window for the images in a project.
+ * 
  * @author Emmi Schwitters
  */
 
 public class EditorPanel extends ParentPanel {
+	private static final long serialVersionUID = 1L;
 
 	public EditorPanel(MainFrame frame) {
 		super(frame);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -33,6 +34,11 @@ public class EditorPanel extends ParentPanel {
 		addComponent("picture", picture);
 	}
 	
+	/**
+	 * Creates a BufferedImage and reads it into a JLabel. Returns the JLabel if successful, otherwise returns null
+	 * 
+	 * @return JLabel - JLabel with ImageIcon
+	 */
 	public JLabel setupImage() {
 		BufferedImage image;
 		try {
@@ -74,8 +80,6 @@ public class EditorPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

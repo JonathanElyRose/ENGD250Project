@@ -1,19 +1,22 @@
-/*
- * @author Jonathan Ely.
- */
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.*;
 import java.lang.Math;
 
+/**
+ * This panel is located inside ProjectsPanel, and aligns the projects into a grid of select dimensions.
+ * 
+ * @author Jonathan Ely.
+ */
+
 public class InnerProjectsPanel extends ParentPanel {
+	private static final long serialVersionUID = 1L;
+	
 	private int gridX;
 	private int numProjects;
 	
@@ -33,6 +36,12 @@ public class InnerProjectsPanel extends ParentPanel {
 		
 	}
 	
+	/**
+	 * Creates a BufferedImage and reads it into a JLabel. Adds the JLabel to the componentMap if successful, otherwise throws an
+	 * error
+	 * 
+	 * @return JLabel - JLabel with ImageIcon
+	 */
 	public void setupLogo(int i) {
 		BufferedImage logoImage;
 		try {
@@ -81,6 +90,11 @@ public class InnerProjectsPanel extends ParentPanel {
 		getLayout().setVerticalGroup(verticalGroup);
 	}
 	
+	/**
+	 * Returns width of panel. Meant for scaling purposes.
+	 * 
+	 * @return
+	 */
 	public int getPanelWidth() {
 		return (gridX * 200) + (gridX * 20);
 	}

@@ -1,16 +1,19 @@
-/*
- * @author Jonathan Ely.
- */
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.*;
 import java.time.*;
 import java.util.HashMap;
 
+/**
+ * A JPanel to create a new .proj file and Project instance. The GUI supports a space for a project name to be entered, with input validation to
+ * avoid special characters. An error will appear on the screen if the input is invalid. It also supports the creation of ImportDialogs for the
+ * purposes of importing and selecting photos.
+ * 
+ * @author Jonathan Ely.
+ */
 public class NewProjectPanel extends ParentPanel {
+	private static final long serialVersionUID = 1L;
 	private HashMap<String, String> importedImages = new HashMap<String, String>();
 	
 	public NewProjectPanel(MainFrame frame) {
@@ -108,6 +111,12 @@ public class NewProjectPanel extends ParentPanel {
 		
 	}
 	
+	/**
+	 * Checks the text written into the JTextField and validates it against conditions. If the text field is valid, the method returns true,
+	 * otherwise it returns false and displays an error.
+	 * 
+	 * @return boolean
+	 */
 	public boolean checkNameValid() {
 		((JLabel) returnComponent("nameFieldError")).setText("");
 		String fieldValue = ((JTextField) returnComponent("nameField")).getText();

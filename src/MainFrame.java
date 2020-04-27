@@ -1,10 +1,16 @@
-/*
+import javax.swing.*;
+
+/**
+ * MainFrame not only provides itself as a JFrame to hold any panels in this program, but also keeps various helper, getter, and
+ * setter methods available for any class that needs them. Most of the program is in some way dependent upon this class. It keeps
+ * an instance of every Panel available for displaying once the associated method is called.
+ * 
  * @author Jonathan Ely, Emmi Schwitters.
  */
 
-import javax.swing.*;
-
 public class MainFrame extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	private ProjectManager projectManager;
 	
 	private HomePanel homePanel = new HomePanel(this);
@@ -33,10 +39,19 @@ public class MainFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * A getter method for the ProjectManager, allowing Panels to create Projects and .proj files.
+	 * 
+	 * @return projectManager - A ProjectManager instance shared by all panels.
+	 */
 	public ProjectManager getProjectManager() {
 		return this.projectManager;
 	}
 	
+	/**
+	 * Splits the frame into a section for the navigation bar, and a lower half to hold the currently viewed panel. Sets the
+	 * HomePanel as the default panel at startup
+	 */
 	public void configurePanels() {
 		GroupLayout layout = new GroupLayout(outerPanel);
 		outerPanel.setLayout(layout);
@@ -61,6 +76,9 @@ public class MainFrame extends JFrame {
 		currentPanel.add(homePanel);
 	}
 	
+	/**
+	 * Changes displayed panel to HomePanel
+	 */
 	public void showHomePanel() {
 		currentPanel.remove(0);
 		currentPanel.add(homePanel);
@@ -68,6 +86,9 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 	
+	/**
+	 * Changes displayed panel to ProjectsPanel
+	 */
 	public void showProjectsPanel() {
 		currentPanel.remove(0);
 		currentPanel.add(projectsPanel);
@@ -75,34 +96,55 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 	
+	/**
+	 * Changes displayed panel to NewProjectPanel
+	 */
 	public void showNewProjectPanel() {
 		currentPanel.remove(0);
 		currentPanel.add(newProjectPanel);
 		this.pack();
 		this.repaint();
 	}
+	
+	/**
+	 * Displays the JFileChooser for the ImportDialog, allowing users to select files
+	 */
 	public void showImportDialog() {
 		new ImportDialog();
-		this.pack();
-		this.repaint();
 	}
+	
+	/**
+	 * Not yet implemented
+	 */
 	public void showSelectPhotosPanel() {
 		//TODO: Add SelectPhotosPanel class
 		this.pack();
 		this.repaint();
 	}
+	
+	/**
+	 * Changes displayed panel to HelpPanel
+	 */
 	public void showHelpPanel() {
 		currentPanel.removeAll();
 		currentPanel.add(helpPanel);
 		this.pack();
 		this.repaint();
 	}
+	
+	/**
+	 * Changes displayed panel to AboutPanel
+	 */
 	public void showAboutPanel() {
 		currentPanel.removeAll();
 		currentPanel.add(aboutPanel);
 		this.pack();
 		this.repaint();
 	}
+	
+	/**
+	 * Changes displayed panel to EditorPanel
+	 */
 	public void showEditorPanel() {
 		currentPanel.removeAll();
 		currentPanel.add(editorPanel);

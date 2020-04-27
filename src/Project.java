@@ -1,9 +1,10 @@
-/*
+import java.util.HashMap;
+
+/**
+ * This class is just a way to bundle together all the different data about a Project.
+ * 
  * @author Jonathan Ely.
  */
-
-import java.nio.file.Path;
-import java.util.HashMap;
 
 public class Project {
 	private String name;
@@ -12,8 +13,10 @@ public class Project {
 	private String thumbnailPath;
 	private HashMap<String, String> imagesMap = new HashMap<String, String>();
 
-	public Project() {
-	}
+	/*
+	 * All of the below methods are getter and setter methods for the various fields of the Project class.
+	 */
+	
 	public String getFilePath() {
 		return filePath;
 	}

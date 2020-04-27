@@ -1,21 +1,21 @@
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
-/*
+
+/**
+ * A JPanel which holds information about the project, the team's names, and images of the team.
+ * 
  * @author Emmi Schwitters, Liz Stutz.
  */
-
 public class AboutPanel extends ParentPanel {
+	private static final long serialVersionUID = 1L;
 
 	public AboutPanel(MainFrame frame) {
 		super(frame);
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public void setupComponents() {
-		// TODO Auto-generated method stub
 		JLabel aboutTitle = new JLabel("ABOUT");
 		JTextArea area = new JTextArea();
 
@@ -32,7 +32,6 @@ public class AboutPanel extends ParentPanel {
 
 	@Override
 	public void setupLayout() {
-		// TODO Auto-generated method stub
 		getLayout().setAutoCreateGaps(true);
 		getLayout().setAutoCreateContainerGaps(true);
 		
@@ -53,8 +52,6 @@ public class AboutPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

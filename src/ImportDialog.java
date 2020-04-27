@@ -2,21 +2,23 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+/**
+ * This dialog is shown to allow the user to select files from their system using the JFileChooser. It can return any
+ * selected files.
+ * 
+ * @author Jonathan Ely
+ */
+
 public class ImportDialog {
 	private File[] selectedImages;
 
 	public ImportDialog() {
-		// create an object of JFileChooser class 
         JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
-
-        // allow multiple file selection 
         j.setMultiSelectionEnabled(true); 
-
-        // invoke the showsOpenDialog function to show the save dialog 
+ 
         int r = j.showOpenDialog(null); 
 
         if (r == JFileChooser.APPROVE_OPTION) { 
-            // get the selected files 
             selectedImages = j.getSelectedFiles();
         }
         else {

@@ -1,15 +1,17 @@
-/*
- * @author Jonathan Ely and Emmi Schwitters.
- */
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-//This class describes the layout of the home page and assigns ActionListeners to its buttons.
+/**
+ * This panel provides options for creating a new project and importing photos.
+ * 
+ * @author Jonathan Ely and Emmi Schwitters.
+ */
+
 public class HomePanel extends ParentPanel{
+	private static final long serialVersionUID = 1L;
+
 	public HomePanel(MainFrame frame) {
 		super(frame);
 	}

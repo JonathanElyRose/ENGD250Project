@@ -1,16 +1,17 @@
-/*
- * @author Jonathan Ely.
- */
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+/**
+ * This class offers methods for reading pre-existing .proj files at startup, turning them into Project instances, and also the
+ * creation of .proj files and Project instances. Anything Project related will pass through here.
+ * 
+ * @author Jonathan Ely.
+ */
 
 public class ProjectManager {
 	private HashMap<String, Project> projectMap = new HashMap<String, Project>();
@@ -18,8 +19,11 @@ public class ProjectManager {
 	public ProjectManager() {
 		mapProjects();
 	}
+	
+	/**
+	 * Searches through the /projects directory and reads any .proj files using the makeProjectInstance method
+	 */
 	public void mapProjects() {
-		List<String> projectFiles = new ArrayList<String>();
 		File dir = new File("src/projects");
 		if(dir.listFiles() != null) {
 			for(File file : dir.listFiles()) {
@@ -30,6 +34,13 @@ public class ProjectManager {
 		}
 	}
 	
+	/**
+	 * Given a Project class with it's project specific attributes, this method turns that information into a .proj file in the
+	 * right format. It throws a fatal error if the file can't be created or written to, and a warning if the project already
+	 * exists
+	 * 
+	 * @param project
+	 */
 	public void makeProjectFile(Project project) {
 		String fileName = project.getName().replaceAll(" ", "_");
 		try {
@@ -62,6 +73,12 @@ public class ProjectManager {
 		}
 	}
 	
+	/**
+	 * Takes in .proj file and reads for specified lines using the handleTag method. Takes each of these attributes, sets them to
+	 * fields in a Project instance, and adds the Project to the projectMap
+	 * 
+	 * @param file - File instance which is expected to be a .proj file
+	 */
 	public void makeProjectInstance(File file) {
 		Project project = new Project();
 		project.setFilePath(file.getPath());
@@ -84,6 +101,13 @@ public class ProjectManager {
 		
 	}
 	
+	/**
+	 * Reads a line for a specified tag, and if there is information on that line, adds it to the provided Project instance. Prints
+	 * an error is a line is unreadable
+	 *
+	 * @param project - The Project instance to add any data to
+	 * @param currentLine - A String of the current line being read in a .proj file
+	 */
 	public void handleTag(Project project, String currentLine) {
 		if(currentLine.contains("name:")) {
 			project.setName(currentLine.substring(5));

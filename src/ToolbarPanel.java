@@ -1,15 +1,22 @@
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 
-/*
+/**
+ * This panel goes inside an instance of EditorPanel, and provides options to edit a Project, including tools for the frame rate,
+ * order of images, and the import of images.
+ * 
  * @author Emmi Schwitters
  */
 
 public class ToolbarPanel extends ParentPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ToolbarPanel(MainFrame frame) {
 		super(frame);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -57,8 +64,6 @@ public class ToolbarPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

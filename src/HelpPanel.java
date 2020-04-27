@@ -1,10 +1,10 @@
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
-import javax.swing.JFrame;
 import javax.swing.JTextArea;
-/*
+
+/**
+ * This panel answers basic questions about how to operate the program.
+ * 
  * @author Emmi Schwitters, Liz Stutz.
  */
 
@@ -14,19 +14,12 @@ public class HelpPanel extends ParentPanel {
 	
 	public HelpPanel(MainFrame frame) {
 		super(frame);
-		
-		
-		
-		
-		// TODO Auto-generated constructor stub
-		
 	}
 	
 	
 
 	@Override
 	public void setupComponents() {
-		// TODO Auto-generated method stub
 		JLabel helpTitle = new JLabel("HELP");
 		
 		JTextArea area = new JTextArea();
@@ -54,7 +47,6 @@ public class HelpPanel extends ParentPanel {
 
 	@Override
 	public void setupLayout() {
-		// TODO Auto-generated method stub
 		getLayout().setAutoCreateGaps(true);
 		getLayout().setAutoCreateContainerGaps(true);
 		
@@ -77,8 +69,6 @@ public class HelpPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
-		// TODO Auto-generated method stub
-
 	}
 
 }
