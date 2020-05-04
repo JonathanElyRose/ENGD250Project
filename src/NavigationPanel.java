@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -11,11 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+
+
 /**
  * A panel for displaying buttons to switch between frequently used and important pages of the program. Always displayed at the top
  * of the MainFrame
  * 
- * @author Jonathan Ely and Emmi Schwitters.
+ * @author Jonathan Ely, Emmi Schwitters, and Liz Stutz.
  */
 
 public class NavigationPanel extends ParentPanel {
@@ -27,10 +30,40 @@ public class NavigationPanel extends ParentPanel {
 
 	@Override
 	public void setupComponents() {
-		JButton menu1 = new JButton("Home");
-		JButton menu2 = new JButton("Projects");
-		JButton menu3 = new JButton("Help");
-		JButton menu4 = new JButton("About");
+				
+		ImageIcon icon1 = new ImageIcon("house icon.png");
+		ImageIcon icon2 = new ImageIcon("folder logo.png");
+		ImageIcon icon3 = new ImageIcon("help logo.png");
+		ImageIcon icon4 = new ImageIcon("about logo.png");
+	
+		java.awt.Image img1 = icon1.getImage();
+		java.awt.Image img2 = icon2.getImage();
+		java.awt.Image img3 = icon3.getImage();
+		java.awt.Image img4 = icon4.getImage();
+
+		int iconSize = 20;
+		Image newimg1 = img1.getScaledInstance(iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ;
+		Image newimg2 = img2.getScaledInstance( iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ; 
+		Image newimg3 = img3.getScaledInstance( iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ; 
+		Image newimg4 = img4.getScaledInstance(iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ; 
+		
+		icon1 = new ImageIcon( newimg1 );
+		icon2 = new ImageIcon( newimg2 );
+		icon3 = new ImageIcon( newimg3 );
+		icon4 = new ImageIcon( newimg4 );
+		
+		JButton menu1 = new JButton(icon1);
+		JButton menu2 = new JButton(icon2);
+		JButton menu3 = new JButton(icon3);
+		JButton menu4 = new JButton(icon4);
+		
+	
+		
+		menu1.setText("Home");
+		menu2.setText("Projects");
+		menu3.setText("Help");
+		menu4.setText("About");
+		
 		
 		int panelScale = getPanelScale();
 		
