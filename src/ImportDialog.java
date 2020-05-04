@@ -1,4 +1,6 @@
-import java.io.*; 
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
@@ -20,6 +22,18 @@ public class ImportDialog {
 
         if (r == JFileChooser.APPROVE_OPTION) { 
             selectedImages = j.getSelectedFiles();
+            
+            for(File file : selectedImages) {
+	            try {
+	            	BufferedImage image = ImageIO.read(file);
+	            	File output = new File(System.getProperty("user.dir") + "/src/data/images/" + file.getName());
+	            	String extension = file.getName().substring(file.getName().lastIndexOf('.') + 1);
+	            	ImageIO.write(image, extension, output);
+	            } 
+	            catch(IOException e) {
+	            	System.out.println("Write error for " + file.getPath() + ": " + e.getMessage());
+	            }
+            }
         }
         else {
         	selectedImages = null;

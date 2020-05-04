@@ -41,7 +41,7 @@ public class ProjectManager {
 	 * 
 	 * @param project
 	 */
-	public void makeProjectFile(Project project) {
+	public String makeProjectFile(Project project) {
 		String fileName = project.getName().replaceAll(" ", "_");
 		try {
 			File projectFile = new File(System.getProperty("user.dir") + "/src/data/projects/" + fileName + ".proj");
@@ -52,24 +52,29 @@ public class ProjectManager {
 					writer.println("name:" + project.getName());
 					writer.println("date:" + project.getDate());
 					writer.println("thumbnailPath:" + project.getThumbnailPath());
-					for(String id : project.getImagesMap().keySet()) {
-						writer.println("image:" + id + ":" +  project.getImagePath(id));
+					for(Integer id : project.getImagesMap().keySet()) {
+						writer.println("image:" + id.toString() + ":" +  project.getImagePath(id));
 					}
 					writer.close();
 					fileWriter.close();
+					
+					return "";
 				}
 				catch(IOException e) {
 					System.out.println("Warning in ProjectManager: Could not write to .proj file '" + fileName + "'. Project file assumed to be empty or corrupted");
+					return "";
 				}
 				
 			}
 			else {
 				System.out.println("Warning in ProjectManager: .proj file '" + fileName + "' already exists");
+				return "exists";
 			}
 		}
 		catch (IOException e) {
 			System.out.println("Fatal Error in ProjectManager: Unable to create .proj file '" + fileName + "'");
 			e.printStackTrace();
+			return "";
 		}
 	}
 	
@@ -120,7 +125,7 @@ public class ProjectManager {
 		}
 		else if(currentLine.contains("image:")) {
 			String[] tagIdAndPath = currentLine.split(":");
-			project.addImage(tagIdAndPath[1], tagIdAndPath[2]);
+			project.addImage(Integer.parseInt(tagIdAndPath[1]), tagIdAndPath[2]);
 		}
 		else {
 			System.out.println("Error in ProjectManager: .proj file at '" + project.getFilePath() + "' has unreadable line '" + currentLine + "'. File was called from: " + Thread.currentThread().getStackTrace()[2].getClassName());

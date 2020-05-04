@@ -145,7 +145,8 @@ public class MainFrame extends JFrame {
 	/**
 	 * Changes displayed panel to EditorPanel
 	 */
-	public void showEditorPanel() {
+	public void showEditorPanel(Project project) {
+		editorPanel.setProject(project);
 		currentPanel.removeAll();
 		currentPanel.add(editorPanel);
 		this.pack();
