@@ -25,7 +25,7 @@ public class NewProjectPanel extends ParentPanel {
 		JLabel nameFieldLabel = new JLabel("New Project Name: ");
 		JLabel nameFieldErrorMessages = new JLabel("");
 		JTextField nameField = new JTextField();
-		JButton selectImages = new JButton("Select Images...");
+		JButton selectImages = new JButton("Select Existing Images...");
 		JButton importImages = new JButton("Import Images...");
 		JButton cancel = new JButton("Cancel");
 		JButton finish = new JButton("Finish!");
@@ -86,11 +86,12 @@ public class NewProjectPanel extends ParentPanel {
 					LocalDate time = LocalDate.now();
 					project.setDate(time.toString());
 					if(importedImages.keySet().size() > 0) {
-						project.setThumbnailPath(importedImages.get(1));
+						project.setThumbnailPath(importedImages.get(0));
 						project.setImagesMap(importedImages);
 					}
 					
 					if(!getFrame().getProjectManager().makeProjectFile(project).equals("exists")) {
+						getFrame().getProjectManager().addProject(project);
 						getFrame().showEditorPanel(project);
 					}
 					else {

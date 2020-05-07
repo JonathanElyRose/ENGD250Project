@@ -15,8 +15,10 @@ import java.util.HashMap;
 
 public class ProjectManager {
 	private HashMap<String, Project> projectMap = new HashMap<String, Project>();
+	private int numOfProjects;
 
 	public ProjectManager() {
+		this.numOfProjects = 0;
 		mapProjects();
 	}
 	
@@ -24,7 +26,7 @@ public class ProjectManager {
 	 * Searches through the /projects directory and reads any .proj files using the makeProjectInstance method
 	 */
 	public void mapProjects() {
-		File dir = new File("src/projects");
+		File dir = new File("src/data/projects");
 		if(dir.listFiles() != null) {
 			for(File file : dir.listFiles()) {
 				if(file.getName().endsWith(".proj")) {
@@ -102,8 +104,11 @@ public class ProjectManager {
 			e.printStackTrace();
 		}
 		
-		projectMap.put(project.getName(), project);
+		addProject(project);
 		
+		if(project.getImagesMap().keySet().size() == 0) {
+			project.setThumbnailPath(null);
+		}
 	}
 	
 	/**
@@ -124,12 +129,39 @@ public class ProjectManager {
 			project.setThumbnailPath(currentLine.substring(("thumbnailPath:").length()));
 		}
 		else if(currentLine.contains("image:")) {
-			String[] tagIdAndPath = currentLine.split(":");
+			String[] tagIdAndPath = currentLine.split(":", 3);
 			project.addImage(Integer.parseInt(tagIdAndPath[1]), tagIdAndPath[2]);
 		}
 		else {
 			System.out.println("Error in ProjectManager: .proj file at '" + project.getFilePath() + "' has unreadable line '" + currentLine + "'. File was called from: " + Thread.currentThread().getStackTrace()[2].getClassName());
 		}
 	}
-
+	
+	/**
+	 * A getter method for the number of projects in the projectMap
+	 * 
+	 * @return int numOfProjects - The size of the projectMap
+	 */
+	public int getNumOfProjects() {
+		return this.numOfProjects;
+	}
+	
+	/**
+	 * A getter method for the HashMap projectMap, giving access to all known projects
+	 * 
+	 * @return HashMap<String,Project> projectMap - A HashMap of all known projects
+	 */
+	public HashMap<String, Project> getProjectMap() {
+		return this.projectMap;
+	}
+	
+	/**
+	 * A method which adds a Project instance to the projectMap
+	 * 
+	 * @param project - The Project to be added to the projectMap
+	 */
+	public void addProject(Project project) {
+		projectMap.put(project.getName(), project);
+		this.numOfProjects++;
+	}
 }

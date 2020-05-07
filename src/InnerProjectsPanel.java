@@ -1,10 +1,14 @@
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.GroupLayout.*;
 import java.lang.Math;
 
@@ -22,16 +26,28 @@ public class InnerProjectsPanel extends ParentPanel {
 	
 	public InnerProjectsPanel(MainFrame frame) {
 		super(frame);
-	}
-
-	
+	}	
 
 	@Override
 	public void setupComponents() {
-		numProjects = 23;
+		numProjects = this.getFrame().getProjectManager().getNumOfProjects();
 		gridX = 4;
-		for(int i = 0; i < numProjects; i++) {
-			setupLogo(i);
+		
+		int i = 0;
+		for(Project project : this.getFrame().getProjectManager().getProjectMap().values()) {
+			JButton button = new JButton(setupThumbnail(project.getThumbnailPath()));
+			
+			if(project.getName().length() > 8) {
+				button.setText(project.getName().substring(0, 7) + "...");
+			}
+			else {
+				button.setText(project.getName());
+			}
+			button.setFont(new Font("Arial", Font.PLAIN, 20));
+			button.setHorizontalTextPosition(JButton.CENTER);
+			button.setVerticalTextPosition(JButton.CENTER);
+			addComponent(Integer.toString(i), button);
+			i++;
 		}
 		
 	}
@@ -42,17 +58,22 @@ public class InnerProjectsPanel extends ParentPanel {
 	 * 
 	 * @return JLabel - JLabel with ImageIcon
 	 */
-	public void setupLogo(int i) {
-		BufferedImage logoImage;
+	public ImageIcon setupThumbnail(String path) {
+		BufferedImage thumbnailImage;
 		try {
-			logoImage = ImageIO.read(new File("logoPlaceholder.png"));
-			java.awt.Image logoImageScaled;
-			logoImageScaled = logoImage.getScaledInstance(logoImage.getWidth() * (getPanelScale() / 25), logoImage.getHeight() * (getPanelScale() / 25), 2);
-			JLabel image = new JLabel(new ImageIcon(logoImageScaled));
-			addComponent(Integer.toString(i), image);
+			if(path == null) {
+				thumbnailImage = ImageIO.read(new File("logoPlaceholder.png"));
+			}
+			else {
+				thumbnailImage = ImageIO.read(new File(path));
+			}
+			java.awt.Image thumbnailImageScaled;
+			thumbnailImageScaled = thumbnailImage.getScaledInstance(200, 100, 2);
+			return new ImageIcon(thumbnailImageScaled);
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 
@@ -101,6 +122,16 @@ public class InnerProjectsPanel extends ParentPanel {
 
 	@Override
 	public void setupListeners() {
+		int i = 0;
+		for(Project project : this.getFrame().getProjectManager().getProjectMap().values()) {
+			((AbstractButton) returnComponent(Integer.toString(i))).addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e) {
+					getFrame().showEditorPanel(project);
+				}
+			});
+			i++;
+		}
 	}
 
 }

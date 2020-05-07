@@ -145,6 +145,7 @@ public class EditorPanel extends ParentPanel {
 	 * A setter method for the project being viewed in the editor panel
 	 * 
 	 * @param project - Project instance of EditorPanel
+	 * 
 	 */
 	public void setProject(Project project) {
 		this.project = project;
