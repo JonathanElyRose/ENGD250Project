@@ -86,7 +86,7 @@ public class NavigationPanel extends ParentPanel {
 	public void setupLogo() {
 		BufferedImage logoImage;
 		try {
-			logoImage = ImageIO.read(new File("Final_Logo.png"));
+			logoImage = ImageIO.read(new File("logoPlaceholder.png"));
 			java.awt.Image logoImageScaled;
 			logoImageScaled = logoImage.getScaledInstance(logoImage.getWidth() * (getPanelScale() / 25), logoImage.getHeight() * (getPanelScale() / 25), 2);
 			addComponent("logo", new JLabel(new ImageIcon(logoImageScaled)));

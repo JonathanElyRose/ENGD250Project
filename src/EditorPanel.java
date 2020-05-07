@@ -53,7 +53,7 @@ public class EditorPanel extends ParentPanel {
 		try {
 			image = ImageIO.read(new File(path));
 			java.awt.Image imageScaled;
-			//int heightScaled = (int) (((float) image.getWidth() / (float) scaledWidth) * (float) image.getHeight());
+			int heightScaled = (int) (((float) image.getWidth() / (float) scaledWidth) * (float) image.getHeight());
 			imageScaled = image.getScaledInstance(this.scaledWidth, 480, 2);
 			return new JLabel(new ImageIcon(imageScaled));
 		} 
