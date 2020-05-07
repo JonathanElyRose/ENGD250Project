@@ -62,7 +62,7 @@ public class InnerProjectsPanel extends ParentPanel {
 		BufferedImage thumbnailImage;
 		try {
 			if(path == null) {
-				thumbnailImage = ImageIO.read(new File("logoPlaceholder.png"));
+				thumbnailImage = ImageIO.read(new File("Final_Logo.png"));
 			}
 			else {
 				thumbnailImage = ImageIO.read(new File(path));
