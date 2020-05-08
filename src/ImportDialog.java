@@ -1,5 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Arrays;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.*;
@@ -12,7 +14,7 @@ import javax.swing.filechooser.*;
  */
 
 public class ImportDialog {
-	private File[] selectedImages;
+	private String[] selectedImages;
 
 	public ImportDialog() {
         JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory()); 
@@ -21,9 +23,9 @@ public class ImportDialog {
         int r = j.showOpenDialog(null); 
 
         if (r == JFileChooser.APPROVE_OPTION) { 
-            selectedImages = j.getSelectedFiles();
+            selectedImages = new String[j.getSelectedFiles().length];
             
-            for(File file : selectedImages) {
+            for(File file : j.getSelectedFiles()) {
 	            try {
 	            	BufferedImage image = ImageIO.read(file);
 	            	File output = new File(System.getProperty("user.dir") + "/src/data/images/" + file.getName());
@@ -34,13 +36,18 @@ public class ImportDialog {
 	            	System.out.println("Write error for " + file.getPath() + ": " + e.getMessage());
 	            }
             }
+            
+            for(int i = 0; i < selectedImages.length; i++) {
+            	selectedImages[i] = j.getSelectedFiles()[i].getName();
+            }
+            
         }
         else {
         	selectedImages = null;
         }
 	}
 	
-	public File[] getSelectedImages() {
+	public String[] getSelectedImages() {
 		return this.selectedImages;
 	}
 

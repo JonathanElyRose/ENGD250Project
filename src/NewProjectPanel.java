@@ -104,14 +104,14 @@ public class NewProjectPanel extends ParentPanel {
 		{
 			public void actionPerformed(ActionEvent e) {
 				ImportDialog dialog = new ImportDialog();
-				File[] images = dialog.getSelectedImages();
+				String[] images = dialog.getSelectedImages();
 				
 				int numOfImages = 0;
 				if(importedImages.size() > 0) {
 					numOfImages = importedImages.size();
 				}
 				for(int i = 0; i < images.length; i++) {
-					importedImages.put(i + numOfImages, System.getProperty("user.dir") + "/src/data/images/" + images[i].getName());
+					importedImages.put(i + numOfImages, System.getProperty("user.dir") + "/src/data/images/" + images[i]);
 				}
 			}
 		});

@@ -115,14 +115,14 @@ public class ToolbarPanel extends ParentPanel {
 		{
 			public void actionPerformed(ActionEvent e) {
 				ImportDialog dialog = new ImportDialog();
-				File[] images = dialog.getSelectedImages();
+				String[] images = dialog.getSelectedImages();
 				
 				int numOfImages = 0;
 				if(editorPanel.getProject().getImagesMap().size() > 0) {
 					numOfImages = editorPanel.getProject().getImagesMap().size();
 				}
 				for(int i = 0; i < images.length; i++) {
-					editorPanel.getProject().addImage(i + numOfImages, System.getProperty("user.dir") + "/src/data/images/" + images[i].getName());
+					editorPanel.getProject().addImage(i + numOfImages, System.getProperty("user.dir") + "/src/data/images/" + images[i]);
 				}
 				editorPanel.loadProject();
 			}
