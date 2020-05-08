@@ -31,11 +31,11 @@ public class EditorPanel extends ParentPanel {
 	public void setupComponents() {
 		this.scaledWidth = 720;
 		
-		ToolbarPanel toolPanel = new ToolbarPanel(this.getFrame());
+		ToolbarPanel toolPanel = new ToolbarPanel(this.getFrame(), this);
 		
 		JButton previous = new JButton("<");
 		JButton next = new JButton(">");
-		JLabel picture = getImageAsLabel("logoPlaceholder.png");
+		JLabel picture = getImageAsLabel("Final_Logo.png");
 		
 		addComponent("toolPanel", toolPanel);
 		addComponent("previous", previous);
@@ -105,15 +105,7 @@ public class EditorPanel extends ParentPanel {
 		((AbstractButton) returnComponent("next")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				if(currentImage + 1 < numOfImages) {
-					currentImage++;
-					setPicture(getImageAsLabel(project.getImagePath(currentImage)));
-					
-				}
-				else if(currentImage + 1 == numOfImages) {
-					currentImage = 0;
-					setPicture(getImageAsLabel(project.getImagePath(currentImage)));
-				}
+				advanceImage();
 			}
 		});
 		((AbstractButton) returnComponent("previous")).addActionListener(new ActionListener()
@@ -159,5 +151,17 @@ public class EditorPanel extends ParentPanel {
 		this.currentImage = 0;
 		setPicture(getImageAsLabel(project.getImagePath(currentImage)));
 		this.numOfImages = project.getImagesMap().keySet().size();
+	}
+	
+	public void advanceImage() {
+		if(currentImage + 1 < numOfImages) {
+			currentImage++;
+			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+			
+		}
+		else if(currentImage + 1 == numOfImages) {
+			currentImage = 0;
+			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+		}
 	}
 }

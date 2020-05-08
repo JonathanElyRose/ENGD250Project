@@ -54,11 +54,14 @@ public class ProjectManager {
 					writer.println("name:" + project.getName());
 					writer.println("date:" + project.getDate());
 					writer.println("thumbnailPath:" + project.getThumbnailPath());
-					for(Integer id : project.getImagesMap().keySet()) {
-						writer.println("image:" + id.toString() + ":" +  project.getImagePath(id));
-					}
 					writer.close();
 					fileWriter.close();
+					
+					String[] paths = new String[project.getImagesMap().size()];
+					for(int i = 0; i < project.getImagesMap().size(); i++) {
+						paths[i] = project.getImagesMap().get(i);
+					}
+					addImages(paths, project, projectFile.getPath(), "new file");
 					
 					return "";
 				}
@@ -163,5 +166,39 @@ public class ProjectManager {
 	public void addProject(Project project) {
 		projectMap.put(project.getName(), project);
 		this.numOfProjects++;
+	}
+	
+	/**
+	 * A method for adding images to new or existing projects. Both writes to their .proj file and adds it to the Project's imagesMap
+	 * 
+	 * @param paths - A String array of paths to images in src/data/images. Method will do nothing if array is null.
+	 * @param project - The project to which images are being added.
+	 */
+	public void addImages(String[] paths, Project project, String projectPath, String mode) {
+		if(paths != null) {
+			int numOfImages = 0;
+			if(mode.equals("existing file")) {
+				if(project.getImagesMap().size() > 0) {
+					numOfImages = project.getImagesMap().size();
+				}
+			}
+			FileWriter fileWriter;
+			try {
+				fileWriter = new FileWriter(projectPath, true);
+				PrintWriter writer = new PrintWriter(fileWriter);
+				for(int i = 0; i < paths.length; i++) {
+					project.addImage(i + numOfImages, paths[i]);
+					writer.println("image:" + Integer.toString(i + numOfImages) + ":" +  paths[i]);
+				}
+				
+				writer.close();
+				fileWriter.close();
+				
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 }

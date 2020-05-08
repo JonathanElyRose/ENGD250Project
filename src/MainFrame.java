@@ -123,15 +123,6 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Not yet implemented
-	 */
-	public void showSelectPhotosPanel() {
-		//TODO: Add SelectPhotosPanel class
-		this.pack();
-		this.repaint();
-	}
-	
-	/**
 	 * Changes displayed panel to HelpPanel
 	 */
 	public void showHelpPanel() {
