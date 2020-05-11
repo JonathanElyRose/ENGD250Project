@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class NewProjectPanel extends ParentPanel {
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, String> importedImages = new HashMap<String, String>();
+	private HashMap<Integer, String> importedImages = new HashMap<Integer, String>();
 	
 	public NewProjectPanel(MainFrame frame) {
 		super(frame);
@@ -25,10 +25,10 @@ public class NewProjectPanel extends ParentPanel {
 		JLabel nameFieldLabel = new JLabel("New Project Name: ");
 		JLabel nameFieldErrorMessages = new JLabel("");
 		JTextField nameField = new JTextField();
-		JButton selectImages = new JButton("Select Images...");
+		JButton selectImages = new JButton("Select Existing Images...");
 		JButton importImages = new JButton("Import Images...");
 		JButton cancel = new JButton("Cancel");
-		JButton createProject = new JButton("Finish!");
+		JButton finish = new JButton("Finish!");
 		
 		
 		addComponent("nameFieldLabel", nameFieldLabel);
@@ -37,7 +37,7 @@ public class NewProjectPanel extends ParentPanel {
 		addComponent("selectImages", selectImages);
 		addComponent("importImages", importImages);
 		addComponent("cancel", cancel);
-		addComponent("createProject", createProject);
+		addComponent("finish", finish);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class NewProjectPanel extends ParentPanel {
 				.addGroup(getLayout().createSequentialGroup()
 						.addComponent(returnComponent("cancel"))
 						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 300, 300)
-						.addComponent(returnComponent("createProject")))		
+						.addComponent(returnComponent("finish")))		
 		);
 		
 		getLayout().setVerticalGroup(
@@ -71,13 +71,13 @@ public class NewProjectPanel extends ParentPanel {
 					.addComponent(returnComponent("selectImages"))
 					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
 						.addComponent(returnComponent("cancel"))
-						.addComponent(returnComponent("createProject"))))	
+						.addComponent(returnComponent("finish"))))	
 		);
 	}
 
 	@Override
 	public void setupListeners() {
-		((AbstractButton) returnComponent("createProject")).addActionListener(new ActionListener()
+		((AbstractButton) returnComponent("finish")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
 				if(checkNameValid()) {
@@ -86,13 +86,17 @@ public class NewProjectPanel extends ParentPanel {
 					LocalDate time = LocalDate.now();
 					project.setDate(time.toString());
 					if(importedImages.keySet().size() > 0) {
-						project.setThumbnailPath(importedImages.get("1"));
+						project.setThumbnailPath(importedImages.get(0));
 						project.setImagesMap(importedImages);
 					}
 					
-					getFrame().getProjectManager().makeProjectFile(project);
-					
-					getFrame().showEditorPanel();
+					if(!getFrame().getProjectManager().makeProjectFile(project).equals("exists")) {
+						getFrame().getProjectManager().addProject(project);
+						getFrame().showEditorPanel(project);
+					}
+					else {
+						((JLabel) returnComponent("nameFieldError")).setText("This project already exists! Choose another name.");
+					}
 				}
 			}
 		});
@@ -100,11 +104,30 @@ public class NewProjectPanel extends ParentPanel {
 		{
 			public void actionPerformed(ActionEvent e) {
 				ImportDialog dialog = new ImportDialog();
-				File[] images = dialog.getSelectedImages();
-				String[] paths = new String[images.length - 1];
-				for(int i = 1; i <= images.length; i++) {
-					paths[i] = images[i].getPath();
-					importedImages.put(Integer.toString(i), paths[i]);
+				String[] images = dialog.getSelectedImages();
+				
+				int numOfImages = 0;
+				if(importedImages.size() > 0) {
+					numOfImages = importedImages.size();
+				}
+				for(int i = 0; i < images.length; i++) {
+					importedImages.put(i + numOfImages, System.getProperty("user.dir") + "/src/data/images/" + images[i]);
+				}
+			}
+		});
+		((AbstractButton) returnComponent("selectImages")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				SelectDialog dialog = new SelectDialog();
+				String[] images = dialog.getSelectedImages();
+				if(images != null) {
+					int numOfImages = 0;
+					if(importedImages.size() > 0) {
+						numOfImages = importedImages.size();
+					}
+					for(int i = 0; i < images.length; i++) {
+						importedImages.put(i + numOfImages, images[i]);
+					}
 				}
 			}
 		});

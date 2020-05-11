@@ -15,8 +15,10 @@ import java.util.HashMap;
 
 public class ProjectManager {
 	private HashMap<String, Project> projectMap = new HashMap<String, Project>();
+	private int numOfProjects;
 
 	public ProjectManager() {
+		this.numOfProjects = 0;
 		mapProjects();
 	}
 	
@@ -24,7 +26,7 @@ public class ProjectManager {
 	 * Searches through the /projects directory and reads any .proj files using the makeProjectInstance method
 	 */
 	public void mapProjects() {
-		File dir = new File("src/projects");
+		File dir = new File("src/data/projects");
 		if(dir.listFiles() != null) {
 			for(File file : dir.listFiles()) {
 				if(file.getName().endsWith(".proj")) {
@@ -41,7 +43,7 @@ public class ProjectManager {
 	 * 
 	 * @param project
 	 */
-	public void makeProjectFile(Project project) {
+	public String makeProjectFile(Project project) {
 		String fileName = project.getName().replaceAll(" ", "_");
 		try {
 			File projectFile = new File(System.getProperty("user.dir") + "/src/data/projects/" + fileName + ".proj");
@@ -52,24 +54,32 @@ public class ProjectManager {
 					writer.println("name:" + project.getName());
 					writer.println("date:" + project.getDate());
 					writer.println("thumbnailPath:" + project.getThumbnailPath());
-					for(String id : project.getImagesMap().keySet()) {
-						writer.println("image:" + id + ":" +  project.getImagePath(id));
-					}
 					writer.close();
 					fileWriter.close();
+					
+					String[] paths = new String[project.getImagesMap().size()];
+					for(int i = 0; i < project.getImagesMap().size(); i++) {
+						paths[i] = project.getImagesMap().get(i);
+					}
+					addImages(paths, project, projectFile.getPath(), "new file");
+					
+					return "";
 				}
 				catch(IOException e) {
 					System.out.println("Warning in ProjectManager: Could not write to .proj file '" + fileName + "'. Project file assumed to be empty or corrupted");
+					return "";
 				}
 				
 			}
 			else {
 				System.out.println("Warning in ProjectManager: .proj file '" + fileName + "' already exists");
+				return "exists";
 			}
 		}
 		catch (IOException e) {
 			System.out.println("Fatal Error in ProjectManager: Unable to create .proj file '" + fileName + "'");
 			e.printStackTrace();
+			return "";
 		}
 	}
 	
@@ -97,8 +107,11 @@ public class ProjectManager {
 			e.printStackTrace();
 		}
 		
-		projectMap.put(project.getName(), project);
+		addProject(project);
 		
+		if(project.getImagesMap().keySet().size() == 0) {
+			project.setThumbnailPath(null);
+		}
 	}
 	
 	/**
@@ -119,12 +132,73 @@ public class ProjectManager {
 			project.setThumbnailPath(currentLine.substring(("thumbnailPath:").length()));
 		}
 		else if(currentLine.contains("image:")) {
-			String[] tagIdAndPath = currentLine.split(":");
-			project.addImage(tagIdAndPath[1], tagIdAndPath[2]);
+			String[] tagIdAndPath = currentLine.split(":", 3);
+			project.addImage(Integer.parseInt(tagIdAndPath[1]), tagIdAndPath[2]);
 		}
 		else {
 			System.out.println("Error in ProjectManager: .proj file at '" + project.getFilePath() + "' has unreadable line '" + currentLine + "'. File was called from: " + Thread.currentThread().getStackTrace()[2].getClassName());
 		}
 	}
-
+	
+	/**
+	 * A getter method for the number of projects in the projectMap
+	 * 
+	 * @return int numOfProjects - The size of the projectMap
+	 */
+	public int getNumOfProjects() {
+		return this.numOfProjects;
+	}
+	
+	/**
+	 * A getter method for the HashMap projectMap, giving access to all known projects
+	 * 
+	 * @return HashMap<String,Project> projectMap - A HashMap of all known projects
+	 */
+	public HashMap<String, Project> getProjectMap() {
+		return this.projectMap;
+	}
+	
+	/**
+	 * A method which adds a Project instance to the projectMap
+	 * 
+	 * @param project - The Project to be added to the projectMap
+	 */
+	public void addProject(Project project) {
+		projectMap.put(project.getName(), project);
+		this.numOfProjects++;
+	}
+	
+	/**
+	 * A method for adding images to new or existing projects. Both writes to their .proj file and adds it to the Project's imagesMap
+	 * 
+	 * @param paths - A String array of paths to images in src/data/images. Method will do nothing if array is null.
+	 * @param project - The project to which images are being added.
+	 */
+	public void addImages(String[] paths, Project project, String projectPath, String mode) {
+		if(paths != null) {
+			int numOfImages = 0;
+			if(mode.equals("existing file")) {
+				if(project.getImagesMap().size() > 0) {
+					numOfImages = project.getImagesMap().size();
+				}
+			}
+			FileWriter fileWriter;
+			try {
+				fileWriter = new FileWriter(projectPath, true);
+				PrintWriter writer = new PrintWriter(fileWriter);
+				for(int i = 0; i < paths.length; i++) {
+					project.addImage(i + numOfImages, paths[i]);
+					writer.println("image:" + Integer.toString(i + numOfImages) + ":" +  paths[i]);
+				}
+				
+				writer.close();
+				fileWriter.close();
+				
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
 }

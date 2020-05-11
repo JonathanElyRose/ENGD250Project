@@ -11,7 +11,7 @@ public class Project {
 	private String filePath;
 	private String date;
 	private String thumbnailPath;
-	private HashMap<String, String> imagesMap = new HashMap<String, String>();
+	private HashMap<Integer, String> imagesMap = new HashMap<Integer, String>();
 
 	/*
 	 * All of the below methods are getter and setter methods for the various fields of the Project class.
@@ -41,16 +41,16 @@ public class Project {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getImagePath(String id) {
+	public String getImagePath(int id) {
 		return this.imagesMap.get(id);
 	}
-	public void addImage(String id, String path) {
+	public void addImage(int id, String path) {
 		this.imagesMap.put(id, path);
 	}
-	public HashMap<String, String> getImagesMap() {
+	public HashMap<Integer, String> getImagesMap() {
 		return this.imagesMap;
 	}
-	public void setImagesMap(HashMap<String, String> map) {
+	public void setImagesMap(HashMap<Integer, String> map) {
 		this.imagesMap = map;
 	}
 }

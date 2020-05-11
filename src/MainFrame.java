@@ -13,19 +13,27 @@ public class MainFrame extends JFrame {
 
 	private ProjectManager projectManager;
 	
-	private HomePanel homePanel = new HomePanel(this);
-	private ProjectsPanel projectsPanel = new ProjectsPanel(this);
-	private NewProjectPanel newProjectPanel = new NewProjectPanel(this);
-	private NavigationPanel navigationPanel = new NavigationPanel(this);
-	private HelpPanel helpPanel = new HelpPanel(this);
-	private AboutPanel aboutPanel = new AboutPanel(this);
-	private EditorPanel editorPanel = new EditorPanel(this);
+	private HomePanel homePanel;
+	private ProjectsPanel projectsPanel;
+	private NewProjectPanel newProjectPanel;
+	private NavigationPanel navigationPanel;
+	private HelpPanel helpPanel;
+	private AboutPanel aboutPanel;
+	private EditorPanel editorPanel;
 	
 	private JPanel outerPanel = new JPanel();
 	private JPanel currentPanel = new JPanel();
 	
 	public MainFrame(ProjectManager projectManager) {
 		this.projectManager = projectManager;
+		
+		homePanel = new HomePanel(this);
+		projectsPanel = new ProjectsPanel(this);
+		newProjectPanel = new NewProjectPanel(this);
+		navigationPanel = new NavigationPanel(this);
+		helpPanel = new HelpPanel(this);
+		aboutPanel = new AboutPanel(this);
+		editorPanel = new EditorPanel(this);
 		
 		this.setTitle("RotoScope");
 		
@@ -87,9 +95,10 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Changes displayed panel to ProjectsPanel
+	 * Changes displayed panel to ProjectsPanel. Creates a new instance to update the panel in case any projects have been made since the last showing.
 	 */
 	public void showProjectsPanel() {
+		projectsPanel = new ProjectsPanel(this);
 		currentPanel.remove(0);
 		currentPanel.add(projectsPanel);
 		this.pack();
@@ -111,15 +120,6 @@ public class MainFrame extends JFrame {
 	 */
 	public void showImportDialog() {
 		new ImportDialog();
-	}
-	
-	/**
-	 * Not yet implemented
-	 */
-	public void showSelectPhotosPanel() {
-		//TODO: Add SelectPhotosPanel class
-		this.pack();
-		this.repaint();
 	}
 	
 	/**
@@ -145,7 +145,8 @@ public class MainFrame extends JFrame {
 	/**
 	 * Changes displayed panel to EditorPanel
 	 */
-	public void showEditorPanel() {
+	public void showEditorPanel(Project project) {
+		editorPanel.setProject(project);
 		currentPanel.removeAll();
 		currentPanel.add(editorPanel);
 		this.pack();

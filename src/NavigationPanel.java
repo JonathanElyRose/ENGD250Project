@@ -67,10 +67,10 @@ public class NavigationPanel extends ParentPanel {
 		
 		int panelScale = getPanelScale();
 		
-		menu1.setMinimumSize(new Dimension(4 * panelScale, 2 * panelScale));
-		menu2.setMinimumSize(new Dimension(4 * panelScale, 2 * panelScale));
-		menu3.setMinimumSize(new Dimension(4 * panelScale, 2 * panelScale));
-		menu4.setMinimumSize(new Dimension(4 * panelScale, 2 * panelScale));
+		menu1.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu2.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu3.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu4.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
 		
 		setupLogo();
 		addComponent("menu1", menu1);
@@ -86,9 +86,9 @@ public class NavigationPanel extends ParentPanel {
 	public void setupLogo() {
 		BufferedImage logoImage;
 		try {
-			logoImage = ImageIO.read(new File("logoPlaceholder.png"));
+			logoImage = ImageIO.read(new File("Final_Logo.png"));
 			java.awt.Image logoImageScaled;
-			logoImageScaled = logoImage.getScaledInstance(logoImage.getWidth() * (getPanelScale() / 25), logoImage.getHeight() * (getPanelScale() / 25), 2);
+			logoImageScaled = logoImage.getScaledInstance(250, 150, 2);
 			addComponent("logo", new JLabel(new ImageIcon(logoImageScaled)));
 		} catch (IOException e) {
 			e.printStackTrace();
