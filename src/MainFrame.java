@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -45,6 +47,9 @@ public class MainFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		this.setVisible(true);
+		
+		this.outerPanel.setBackground(Color.gray);
+		this.currentPanel.setBackground(Color.gray);
 	}
 	
 	/**
