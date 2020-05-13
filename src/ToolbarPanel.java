@@ -127,6 +127,12 @@ public class ToolbarPanel extends ParentPanel {
 				editorPanel.loadProject();
 			}
 		});
+		((AbstractButton) returnComponent("exportVideo")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().getVideoManager().exportVideo(editorPanel.getProject(), Integer.parseInt(((JTextField) returnComponent("fs")).getText()));
+			}
+		});
 	}
 	
 	public void playerToggle() {

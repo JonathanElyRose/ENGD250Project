@@ -15,6 +15,8 @@ public class MainFrame extends JFrame {
 
 	private ProjectManager projectManager;
 	
+	private VideoManager videoManager = new VideoManager();;
+	
 	private HomePanel homePanel;
 	private ProjectsPanel projectsPanel;
 	private NewProjectPanel newProjectPanel;
@@ -59,6 +61,15 @@ public class MainFrame extends JFrame {
 	 */
 	public ProjectManager getProjectManager() {
 		return this.projectManager;
+	}
+	
+	/**
+	 * A getter method for the VideoManager, allowing Panels to create videos from Project's imageMaps.
+	 * 
+	 * @return videotManager - A VideoManager instance shared by all panels.
+	 */
+	public VideoManager getVideoManager() {
+		return this.videoManager;
 	}
 	
 	/**
