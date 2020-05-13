@@ -50,7 +50,6 @@ public class ToolbarPanel extends ParentPanel {
 		JButton selectPhoto = new JButton("Select Photos");
 		JButton importPhoto = new JButton("Import Photos");
 		JButton exportVideo = new JButton("Export Animation");
-		JButton editor = new JButton("Edit Photos");
 		
 		addComponent("play", play);
 		addComponent("fsLabel", fsLabel);
@@ -58,7 +57,6 @@ public class ToolbarPanel extends ParentPanel {
 		addComponent("selectPhoto", selectPhoto);
 		addComponent("importPhoto", importPhoto);
 		addComponent("exportVideo", exportVideo);
-		addComponent("editor", editor);
 
 	}
 
@@ -76,8 +74,7 @@ public class ToolbarPanel extends ParentPanel {
 						.addComponent(returnComponent("fs")))
 					.addComponent(returnComponent("selectPhoto"))
 					.addComponent(returnComponent("importPhoto"))
-					.addComponent(returnComponent("exportVideo"))
-					.addComponent(returnComponent("editor")))
+					.addComponent(returnComponent("exportVideo")))
 		);
 		
 		getLayout().setVerticalGroup(
@@ -88,8 +85,7 @@ public class ToolbarPanel extends ParentPanel {
 					.addComponent(returnComponent("fs"))
 					.addComponent(returnComponent("selectPhoto"))
 					.addComponent(returnComponent("importPhoto"))
-					.addComponent(returnComponent("exportVideo"))
-					.addComponent(returnComponent("editor")))
+					.addComponent(returnComponent("exportVideo")))
 		);
 
 	}

@@ -137,7 +137,12 @@ public class NewProjectPanel extends ParentPanel {
 				}
 			}
 		});
-		
+		((AbstractButton) returnComponent("cancel")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				getFrame().showHomePanel();
+			}
+		});
 	}
 	
 	/**
