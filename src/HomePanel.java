@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,6 +45,9 @@ public class HomePanel extends ParentPanel{
 		
 		addComponent("newProject", newProject);
 		addComponent("importPhotos", importPhotos);
+		
+		newProject.setBackground(Color.white);
+		importPhotos.setBackground(Color.white);
 	}
 	
 	public void setupLayout() {

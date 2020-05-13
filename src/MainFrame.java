@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -12,6 +14,8 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private ProjectManager projectManager;
+	
+	private VideoManager videoManager = new VideoManager();;
 	
 	private HomePanel homePanel;
 	private ProjectsPanel projectsPanel;
@@ -45,6 +49,9 @@ public class MainFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		this.setVisible(true);
+		
+		this.outerPanel.setBackground(Color.gray);
+		this.currentPanel.setBackground(Color.gray);
 	}
 	
 	/**
@@ -54,6 +61,15 @@ public class MainFrame extends JFrame {
 	 */
 	public ProjectManager getProjectManager() {
 		return this.projectManager;
+	}
+	
+	/**
+	 * A getter method for the VideoManager, allowing Panels to create videos from Project's imageMaps.
+	 * 
+	 * @return videotManager - A VideoManager instance shared by all panels.
+	 */
+	public VideoManager getVideoManager() {
+		return this.videoManager;
 	}
 	
 	/**

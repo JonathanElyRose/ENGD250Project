@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.GroupLayout;
 import javax.swing.JComponent;
@@ -8,7 +9,7 @@ import javax.swing.JPanel;
  * instance of the program, an instance of GroupLayout, which can be used for directing the layout of JComponents within the JPanel, and a
  * HashMap of String keys linked to JComponent entries, which allows JPanels a place to store and access their JComponents from.
  * 
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters.
  */
 public abstract class ParentPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -23,6 +24,8 @@ public abstract class ParentPanel extends JPanel{
 		setupComponents();
 		setupListeners();
 		setupLayout();
+		
+		this.setBackground(Color.gray);
 	}
 	
 	/**

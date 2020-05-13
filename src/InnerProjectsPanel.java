@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +16,7 @@ import java.lang.Math;
 /**
  * This panel is located inside ProjectsPanel, and aligns the projects into a grid of select dimensions.
  * 
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters.
  */
 
 public class InnerProjectsPanel extends ParentPanel {
@@ -48,6 +49,8 @@ public class InnerProjectsPanel extends ParentPanel {
 			button.setVerticalTextPosition(JButton.CENTER);
 			addComponent(Integer.toString(i), button);
 			i++;
+			
+			button.setBackground(Color.gray);
 		}
 		
 	}

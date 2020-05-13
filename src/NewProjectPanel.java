@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -10,7 +11,7 @@ import java.util.HashMap;
  * avoid special characters. An error will appear on the screen if the input is invalid. It also supports the creation of ImportDialogs for the
  * purposes of importing and selecting photos.
  * 
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters.
  */
 public class NewProjectPanel extends ParentPanel {
 	private static final long serialVersionUID = 1L;
@@ -38,6 +39,11 @@ public class NewProjectPanel extends ParentPanel {
 		addComponent("importImages", importImages);
 		addComponent("cancel", cancel);
 		addComponent("finish", finish);
+		
+		selectImages.setBackground(Color.white);
+		importImages.setBackground(Color.white);
+		cancel.setBackground(Color.white);
+		finish.setBackground(Color.white);
 	}
 
 	@Override

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -77,6 +78,11 @@ public class NavigationPanel extends ParentPanel {
 		addComponent("menu2", menu2);
 		addComponent("menu3", menu3);
 		addComponent("menu4", menu4);
+		
+		menu1.setBackground(Color.white);
+		menu2.setBackground(Color.white);
+		menu3.setBackground(Color.white);
+		menu4.setBackground(Color.white);
 
 	}
 	

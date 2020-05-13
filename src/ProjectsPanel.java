@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 /**
  * This panel creates InnerProjectsPanel to hold inside it, and allows scrolling features for the InnerProjectsPanel.
  * 
- * @author Jonathan Ely.
+ * @author Jonathan Ely, Emmi Schwitters.
  */
 
 public class ProjectsPanel extends ParentPanel {
