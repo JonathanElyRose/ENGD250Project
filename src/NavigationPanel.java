@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -53,10 +52,10 @@ public class NavigationPanel extends ParentPanel {
 		icon3 = new ImageIcon( newimg3 );
 		icon4 = new ImageIcon( newimg4 );
 		
-		JButton menu1 = new JButton(icon1);
-		JButton menu2 = new JButton(icon2);
-		JButton menu3 = new JButton(icon3);
-		JButton menu4 = new JButton(icon4);
+		RotoButton menu1 = new RotoButton(icon1);
+		RotoButton menu2 = new RotoButton(icon2);
+		RotoButton menu3 = new RotoButton(icon3);
+		RotoButton menu4 = new RotoButton(icon4);
 		
 	
 		
@@ -78,12 +77,6 @@ public class NavigationPanel extends ParentPanel {
 		addComponent("menu2", menu2);
 		addComponent("menu3", menu3);
 		addComponent("menu4", menu4);
-		
-		menu1.setBackground(Color.white);
-		menu2.setBackground(Color.white);
-		menu3.setBackground(Color.white);
-		menu4.setBackground(Color.white);
-
 	}
 	
 	/**

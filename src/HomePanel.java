@@ -18,8 +18,8 @@ public class HomePanel extends ParentPanel{
 	}
 
 	public void setupComponents() {
-		JButton newProject = new JButton("New Project");
-		JButton importPhotos = new JButton("Import Photos");
+		RotoButton newProject = new RotoButton("New Project");
+		RotoButton importPhotos = new RotoButton("Import Photos");
 		
 		int panelScale = getPanelScale();
 		newProject.setMinimumSize(new Dimension(10 * panelScale, 4 * panelScale));

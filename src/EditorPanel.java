@@ -33,8 +33,8 @@ public class EditorPanel extends ParentPanel {
 		
 		ToolbarPanel toolPanel = new ToolbarPanel(this.getFrame(), this);
 		
-		JButton previous = new JButton("<");
-		JButton next = new JButton(">");
+		RotoButton previous = new RotoButton("<");
+		RotoButton next = new RotoButton(">");
 		JLabel picture = getImageAsLabel("Final_Logo.png");
 		
 		addComponent("toolPanel", toolPanel);

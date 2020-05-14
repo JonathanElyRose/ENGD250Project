@@ -44,12 +44,12 @@ public class ToolbarPanel extends ParentPanel {
 	@Override
 	public void setupComponents() {
 		
-		JButton play = new JButton("Play/Pause");
+		RotoButton play = new RotoButton("Play/Pause");
 		JLabel fsLabel = new JLabel("Frames/Second");
 		JTextField fs = new JTextField("1", 2);
-		JButton selectPhoto = new JButton("Select Photos");
-		JButton importPhoto = new JButton("Import Photos");
-		JButton exportVideo = new JButton("Export Animation");
+		RotoButton selectPhoto = new RotoButton("Select Photos");
+		RotoButton importPhoto = new RotoButton("Import Photos");
+		RotoButton exportVideo = new RotoButton("Export Animation");
 		
 		addComponent("play", play);
 		addComponent("fsLabel", fsLabel);
