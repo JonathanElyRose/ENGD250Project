@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
 		aboutPanel = new AboutPanel(this);
 		editorPanel = new EditorPanel(this);
 		
-		this.setTitle("RotoScope");
+		this.setTitle("Imaginate");
 		
 		configurePanels();
 		
@@ -121,7 +121,7 @@ public class MainFrame extends JFrame {
 		this.repaint();
 	}
 	
-	/**
+	/**			
 	 * Changes displayed panel to NewProjectPanel
 	 */
 	public void showNewProjectPanel() {
