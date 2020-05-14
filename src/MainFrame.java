@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 
 	private ProjectManager projectManager;
 	
-	private VideoManager videoManager = new VideoManager();;
+	private VideoManager videoManager = new VideoManager();
 	
 	private HomePanel homePanel;
 	private ProjectsPanel projectsPanel;
