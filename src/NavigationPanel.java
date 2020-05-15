@@ -32,10 +32,10 @@ public class NavigationPanel extends ParentPanel {
 	@Override
 	public void setupComponents() {
 				
-		ImageIcon icon1 = new ImageIcon("house icon.png");
-		ImageIcon icon2 = new ImageIcon("folder logo.png");
-		ImageIcon icon3 = new ImageIcon("help logo.png");
-		ImageIcon icon4 = new ImageIcon("about logo.png");
+		ImageIcon icon1 = new ImageIcon("home logo.png");
+		ImageIcon icon2 = new ImageIcon("projects logo.png");
+		ImageIcon icon3 = new ImageIcon("Question.png");
+		ImageIcon icon4 = new ImageIcon("about  logo.png");
 	
 		java.awt.Image img1 = icon1.getImage();
 		java.awt.Image img2 = icon2.getImage();

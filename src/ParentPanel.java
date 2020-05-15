@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -41,10 +42,10 @@ public abstract class ParentPanel extends JPanel{
 	 * Adds a new JComponent to the JPanel's HashMap<String, JComponent> componentMap. This HashMap is used to keep track of a Panel's JComponents.
 	 * 
 	 * @param string - ID String (usually the name of the local JComponent variable where this function is called)
-	 * @param component - JComponent instance (JButton, JTextField, etc.)
+	 * @param icon - JComponent instance (JButton, JTextField, etc.)
 	 */
-	public void addComponent(String string, JComponent component) {
-		this.componentMap.put(string, component);
+	public void addComponent(String string, JComponent icon) {
+		this.componentMap.put(string, icon);
 	}
 	
 	/**
