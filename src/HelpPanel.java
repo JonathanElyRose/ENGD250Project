@@ -1,8 +1,12 @@
 import java.awt.Dimension;
-
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
 
+/**
+ * This panel creates InnerHelpPanel and places it in a scroll bar.
+ * 
+ * @author Jonathan Ely, Liz Stutz.
+ */
 public class HelpPanel extends ParentPanel {
 
 	public HelpPanel(MainFrame frame) {
