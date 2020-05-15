@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
- * This panel answers basic questions about how to operate the program.
+ * This panel is located inside HelpPanel and answers basic questions about how to operate the program.
  * 
  * @author Emmi Schwitters, Liz Stutz.
  */
