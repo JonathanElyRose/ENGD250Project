@@ -36,7 +36,7 @@ public class InnerProjectsPanel extends ParentPanel {
 		
 		int i = 0;
 		for(Project project : this.getFrame().getProjectManager().getProjectMap().values()) {
-			JButton button = new JButton(setupThumbnail(project.getThumbnailPath()));
+			RotoButton button = new RotoButton(setupThumbnail(project.getThumbnailPath()));
 			
 			if(project.getName().length() > 8) {
 				button.setText(project.getName().substring(0, 7) + "...");

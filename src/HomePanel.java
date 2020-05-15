@@ -20,6 +20,7 @@ public class HomePanel extends ParentPanel{
 	}
 
 	public void setupComponents() {
+
 		ImageIcon icon1 = new ImageIcon("new project icon.png");
 		ImageIcon icon2 = new ImageIcon("add image icon.png");
 		
@@ -33,11 +34,12 @@ public class HomePanel extends ParentPanel{
 		icon1 = new ImageIcon( newimg1 );
 		icon2 = new ImageIcon( newimg2 );
 		
-		JButton newProject = new JButton(icon1);
-		JButton importPhotos = new JButton(icon2);
+		RotoButton newProject = new RotoButton("New Project");
+		RotoButton importPhotos = new RotoButton("Import Photos");
 		
 		newProject.setText("New Project");
 		importPhotos.setText("Import Photos");
+
 		
 		int panelScale = getPanelScale();
 		newProject.setMinimumSize(new Dimension(10 * panelScale, 4 * panelScale));

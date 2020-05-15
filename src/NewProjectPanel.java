@@ -26,10 +26,10 @@ public class NewProjectPanel extends ParentPanel {
 		JLabel nameFieldLabel = new JLabel("New Project Name: ");
 		JLabel nameFieldErrorMessages = new JLabel("");
 		JTextField nameField = new JTextField();
-		JButton selectImages = new JButton("Select Existing Images...");
-		JButton importImages = new JButton("Import Images...");
-		JButton cancel = new JButton("Cancel");
-		JButton finish = new JButton("Finish!");
+		RotoButton selectImages = new RotoButton("Select Existing Images...");
+		RotoButton importImages = new RotoButton("Import Images...");
+		RotoButton cancel = new RotoButton("Cancel");
+		RotoButton finish = new RotoButton("Finish!");
 		
 		
 		addComponent("nameFieldLabel", nameFieldLabel);
