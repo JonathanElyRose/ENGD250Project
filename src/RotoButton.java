@@ -49,16 +49,70 @@ public class RotoButton extends JButton implements MouseListener {
 	public RotoButton(String text) {
 		super(text);
 		// TODO Auto-generated constructor stub
+		this.setBackground(Color.white);
+		this.outline1 = BorderFactory.createLineBorder(Color.yellow, 5);
+		this.outline2 = BorderFactory.createLineBorder(Color.red, 5);
+		this.button = this;
+		this.setBorder(outline1);
+		this.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline2);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline1);
+			}
+		});
 	}
 
 	public RotoButton(Action a) {
 		super(a);
 		// TODO Auto-generated constructor stub
+		this.setBackground(Color.white);
+		this.outline1 = BorderFactory.createLineBorder(Color.yellow, 5);
+		this.outline2 = BorderFactory.createLineBorder(Color.red, 5);
+		this.button = this;
+		this.setBorder(outline1);
+		this.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline2);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline1);
+			}
+		});
 	}
 
 	public RotoButton(String text, Icon icon) {
 		super(text, icon);
 		// TODO Auto-generated constructor stub
+		this.setBackground(Color.white);
+		this.outline1 = BorderFactory.createLineBorder(Color.yellow, 5);
+		this.outline2 = BorderFactory.createLineBorder(Color.red, 5);
+		this.button = this;
+		this.setBorder(outline1);
+		this.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline2);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				button.setBorder(outline1);
+			}
+		});
 	}
 
 	@Override
