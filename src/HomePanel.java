@@ -34,8 +34,8 @@ public class HomePanel extends ParentPanel{
 		icon1 = new ImageIcon( newimg1 );
 		icon2 = new ImageIcon( newimg2 );
 		
-		RotoButton newProject = new RotoButton("New Project");
-		RotoButton importPhotos = new RotoButton("Import Photos");
+		RotoButton newProject = new RotoButton(icon1);
+		RotoButton importPhotos = new RotoButton(icon2);
 		
 		newProject.setText("New Project");
 		importPhotos.setText("Import Photos");
