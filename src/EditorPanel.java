@@ -34,13 +34,17 @@ public class EditorPanel extends ParentPanel {
 		ToolbarPanel toolPanel = new ToolbarPanel(this.getFrame(), this);
 		
 		RotoButton previous = new RotoButton("<");
+		RotoButton backFive = new RotoButton("<<");
 		RotoButton next = new RotoButton(">");
+		RotoButton forwardFive = new RotoButton(">>");
 		JLabel picture = getImageAsLabel("Final_Logo.png");
 		
 		addComponent("toolPanel", toolPanel);
 		addComponent("previous", previous);
 		addComponent("next", next);
 		addComponent("picture", picture);
+		addComponent("backFive", backFive);
+		addComponent("forwardFive", forwardFive);
 	}
 	
 	/**
@@ -81,20 +85,24 @@ public class EditorPanel extends ParentPanel {
 		getLayout().setVerticalGroup(
 				getLayout().createSequentialGroup()
 					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
+							.addComponent(returnComponent("backFive"))
 						.addComponent(returnComponent("previous"))
 						.addComponent(returnComponent("picture"))
-						.addComponent(returnComponent("next")))
+						.addComponent(returnComponent("next"))
+					.addComponent(returnComponent("forwardFive")))
 					.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
 						.addComponent(returnComponent("toolPanel")))
 		);
 		
 		getLayout().setHorizontalGroup(
 			getLayout().createSequentialGroup()
+				.addComponent(returnComponent("backFive"))
 				.addComponent(returnComponent("previous"))
 				.addGroup(getLayout().createParallelGroup(GroupLayout.Alignment.CENTER)
 					.addComponent(returnComponent("picture"))
 					.addComponent(returnComponent("toolPanel")))
 				.addComponent(returnComponent("next"))
+				.addComponent(returnComponent("forwardFive"))
 		);
 		
 
@@ -105,21 +113,25 @@ public class EditorPanel extends ParentPanel {
 		((AbstractButton) returnComponent("next")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				advanceImage();
+				advanceImage(1);
 			}
 		});
 		((AbstractButton) returnComponent("previous")).addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				if(currentImage > 0) {
-					currentImage--;
-					setPicture(getImageAsLabel(project.getImagePath(currentImage)));
-					
-				}
-				else if(currentImage == 0) {
-					currentImage = numOfImages - 1;
-					setPicture(getImageAsLabel(project.getImagePath(currentImage)));
-				}
+				advanceImage(-1);
+			}
+		});
+		((AbstractButton) returnComponent("forwardFive")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				advanceImage(5);
+			}
+		});
+		((AbstractButton) returnComponent("backFive")).addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				advanceImage(-5);
 			}
 		});
 	}
@@ -153,14 +165,20 @@ public class EditorPanel extends ParentPanel {
 		this.numOfImages = project.getImagesMap().keySet().size();
 	}
 	
-	public void advanceImage() {
-		if(currentImage + 1 < numOfImages) {
-			currentImage++;
+	/**
+	 * A method which moves the images in the editor either backwards or forwards a certain number of steps
+	 */
+	public void advanceImage(int steps) {
+		if((currentImage + steps <= numOfImages - 1) && (currentImage + steps >= 0)) {
+			currentImage += steps;
 			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
-			
 		}
-		else if(currentImage + 1 == numOfImages) {
-			currentImage = 0;
+		else if(currentImage + steps > numOfImages - 1) {
+			currentImage = (currentImage + steps - 1) - (numOfImages - 1);
+			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+		}
+		else if(currentImage + steps < 0) {
+			currentImage = (numOfImages) + (currentImage + steps);
 			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
 		}
 	}

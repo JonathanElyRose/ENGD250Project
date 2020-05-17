@@ -1,10 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
 import javax.swing.Timer;
 import javax.swing.AbstractButton;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -33,7 +30,7 @@ public class ToolbarPanel extends ParentPanel {
 			public void actionPerformed(ActionEvent e) {
 				fps = Integer.parseInt(((JTextField) returnComponent("fs")).getText());
 				timer.setDelay(1000 / fps);
-				editorPanel.advanceImage();
+				editorPanel.advanceImage(1);
 				getFrame().repaint();
 				getFrame().pack();
 			}
@@ -94,6 +91,7 @@ public class ToolbarPanel extends ParentPanel {
 	public void setupListeners() {
 		((AbstractButton) returnComponent("selectPhoto")).addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				SelectDialog dialog = new SelectDialog();
 				String[] images = dialog.getSelectedImages();
@@ -103,12 +101,14 @@ public class ToolbarPanel extends ParentPanel {
 		});
 		((AbstractButton) returnComponent("play")).addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				playerToggle();
 			}
 		});
 		((AbstractButton) returnComponent("importPhoto")).addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				ImportDialog dialog = new ImportDialog();
 				String[] images = dialog.getSelectedImages();
@@ -125,6 +125,7 @@ public class ToolbarPanel extends ParentPanel {
 		});
 		((AbstractButton) returnComponent("exportVideo")).addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				getFrame().getVideoManager().exportVideo(editorPanel.getProject(), Integer.parseInt(((JTextField) returnComponent("fs")).getText()));
 			}
