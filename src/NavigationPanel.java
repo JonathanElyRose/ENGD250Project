@@ -72,6 +72,8 @@ public class NavigationPanel extends ParentPanel {
 		menu3.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
 		menu4.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
 		
+	
+		
 		setupLogo();
 		addComponent("menu1", menu1);
 		addComponent("menu2", menu2);

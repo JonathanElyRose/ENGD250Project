@@ -21,8 +21,8 @@ public class HomePanel extends ParentPanel{
 
 	public void setupComponents() {
 
-		ImageIcon icon1 = new ImageIcon("new project icon.png");
-		ImageIcon icon2 = new ImageIcon("add image icon.png");
+		ImageIcon icon1 = new ImageIcon("new project logo.png");
+		ImageIcon icon2 = new ImageIcon("add image logo.png");
 		
 		java.awt.Image img1 = icon1.getImage();
 		java.awt.Image img2 = icon2.getImage();
