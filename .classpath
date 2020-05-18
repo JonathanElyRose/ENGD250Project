@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="commons-cli-1/4-src/|commons-cli-1.4-src/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="src/xuggle-xuggler-5.4.jar"/>
 	<classpathentry kind="lib" path="src/slf4j-api-1.7.30.jar"/>
