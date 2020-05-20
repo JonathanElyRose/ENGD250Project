@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.GroupLayout;
@@ -52,6 +53,9 @@ public class AboutPanel extends ParentPanel {
 				+ "will allow users to create entertaining animation sequences using a combination of traditional hand-drawn skills "
 				+ "along with a \nmodern app that allows them to bring their stories to life.");
 
+		area.setFont(new Font("Arial", Font.PLAIN, 20));
+		aboutTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+		
 		addComponent("aboutTitle", aboutTitle);
 		addComponent("area", area);
 		addComponent("label1", label1);

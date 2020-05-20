@@ -82,6 +82,7 @@ public class NavigationPanel extends ParentPanel {
 		
 		int panelScale = getPanelScale();
 		
+<<<<<<< HEAD
 
 		menu1.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
 		menu2.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
@@ -91,11 +92,26 @@ public class NavigationPanel extends ParentPanel {
 	
 		
 
+=======
+
+		menu1.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu2.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu3.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu4.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		
+	
+		
+
+>>>>>>> branch 'master' of https://github.com/JonathanElyRose/ENGD250Project.git
 		menu1.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu2.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu3.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu4.setMinimumSize(new Dimension(5 * panelScale, 166));
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/JonathanElyRose/ENGD250Project.git
 		setupLogo();
 		addComponent("menu1", menu1);
 		addComponent("menu2", menu2);

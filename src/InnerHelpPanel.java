@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.GroupLayout;
@@ -30,16 +31,22 @@ public class InnerHelpPanel extends ParentPanel {
 		JTextArea area3 = new JTextArea();
 		JTextArea area4 = new JTextArea();
 		
-		area1.setText("How do I create a new project?\n\n To create a new project, go to the home page and select “New Project”.  A window will then pop up asking you to name your project and import images to be used in the project.");
+		area1.setText("How do I create a new project?\n\n To create a new project, go to the home page and select “New Project”.  A window will then pop up asking you to name your project and \nimport images to be used in the project.");
 				area2.setText("How do I find my ongoing projects?\n\n"
-				+ "If you go to the menu bar at the top of the application, you will find a page labeled “Projects”.  Click on this and you will be taken to a page that lists all of your projects.  If you want to find a \nproject you have been working on recently, they can be found at the top of the Home page.");
+				+ "If you go to the menu bar at the top of the application, you will find a page labeled “Projects”.  Click on this and you will be taken to a page \nthat lists all of your projects.  If you want to find a project you have been working on recently, they can be found at the top of the Home \npage.");
 				area3.setText("How do I import photos?\n\n"
-				+ "There are a few different ways to upload images.  One way is to go to the Home page and click on the button on the bottom right labeled “Import Photos”.  This will take you to your computer’s\n files and allow you to select which photos you want to upload.  "
-				+ "Another way to import photos is when you first create a new project.  After asking you to name the project, there is a button that \nis labeled “Import Images”, which will also take you to your computer’s files and allow you to select the images you want to use.  "
-				+ "A third and final way is to select the “Import Images” button \nin the project editor.");
+				+ "There are a few different ways to upload images.  One way is to go to the Home page and click on the button on the bottom right labeled \n“Import Photos”.  This will take you to your computer’s files and allow you to select which photos you want to upload.  "
+				+ "Another way to \nimport photos is when you first create a new project.  After asking you to name the project, there is a button that is labeled “Import \nImages”, which will also take you to your computer’s files and allow you to select the images you want to use.  "
+				+ "A third and final way is \nto select the “Import Images” button in the project editor.");
 				area4.setText("How do I save my projects?\n\n"
 				+ "To save a project, go to the projects tab, select the project you want to save, and click the 'Export Animation.'");
 
+		area1.setFont(new Font("Arial", Font.PLAIN, 20));
+		area2.setFont(new Font("Arial", Font.PLAIN, 20));
+		area3.setFont(new Font("Arial", Font.PLAIN, 20));
+		area4.setFont(new Font("Arial", Font.PLAIN, 20));
+		helpTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+				
 		ImageIcon icon1 = new ImageIcon("Help part 1.png");
 		ImageIcon icon2 = new ImageIcon("Help part 2.png");
 		ImageIcon icon3 = new ImageIcon("Help part 3.png");
