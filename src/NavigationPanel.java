@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
@@ -75,13 +75,27 @@ public class NavigationPanel extends ParentPanel {
 		menu3.setText("Help");
 		menu4.setText("About");
 		
+		menu1.setFont(new Font("Arial", Font.PLAIN, 20));
+		menu2.setFont(new Font("Arial", Font.PLAIN, 20));
+		menu3.setFont(new Font("Arial", Font.PLAIN, 20));
+		menu4.setFont(new Font("Arial", Font.PLAIN, 20));
 		
 		int panelScale = getPanelScale();
 		
+
+		menu1.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu2.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu3.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		menu4.setMinimumSize(new Dimension(5 * panelScale, 3 * panelScale));
+		
+	
+		
+
 		menu1.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu2.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu3.setMinimumSize(new Dimension(5 * panelScale, 166));
 		menu4.setMinimumSize(new Dimension(5 * panelScale, 166));
+
 		setupLogo();
 		addComponent("menu1", menu1);
 		addComponent("menu2", menu2);
@@ -164,7 +178,10 @@ public class NavigationPanel extends ParentPanel {
 		((JLabel) returnComponent("motto")).addMouseListener(new MouseAdapter()
 		{
 			public void mouseEntered(MouseEvent evt) {
-				String array[] = {"Image makes video machine go brrr!", "OOGA BOOGA OOGA BOOGA", "The back end is just frozen rubber bands.", "CSSE_Career == Money && !Friends"};
+				String array[] = {"Image makes video machine go brrr!", "OOGA BOOGA OOGA BOOGA", "The back end is just frozen rubber bands.", "CSSE_Career == Money && !Friends",
+						"Emmi's cat has a strong dislike for her.", "Hotel? Trivago. Image? Video.", "Degree? Community College.", "Bwing imwagiwation twu wife", 
+						"Ten-second Gimp images look great! (Maybe)", "Imaginate is even compatible with Zoom!", "ENGD? More like End Me!", "Special Thanks to: Brad and Brad Brad",
+						"I'll fight you with finger guns!", "Tenth Week Procrastination!"};
 				((JLabel) returnComponent("motto")).setText(array[something]);
 				if(something == array.length - 1) {
 					something = 0;

@@ -134,6 +134,7 @@ public class ToolbarPanel extends ParentPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(verifyFPS()) {
+					getFrame().getVideoManager().makeProgressBar();
 					getFrame().getVideoManager().exportVideo(editorPanel.getProject(), Integer.parseInt(((JTextField) returnComponent("fs")).getText()));
 				}
 			}
