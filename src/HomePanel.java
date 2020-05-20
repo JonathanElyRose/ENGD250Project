@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -40,6 +41,8 @@ public class HomePanel extends ParentPanel{
 		newProject.setText("New Project");
 		importPhotos.setText("Import Photos");
 
+		newProject.setFont(new Font("Arial", Font.PLAIN, 20));
+		importPhotos.setFont(new Font("Arial", Font.PLAIN, 20));
 		
 		int panelScale = getPanelScale();
 		newProject.setMinimumSize(new Dimension(10 * panelScale, 4 * panelScale));
