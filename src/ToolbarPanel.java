@@ -67,6 +67,7 @@ public class ToolbarPanel extends ParentPanel {
 		
 		JLabel fpsErrorMessages = new JLabel("");
 		RotoButton play = new RotoButton(playIcon);
+		play.setText("Play");
 		JLabel fsLabel = new JLabel("Frames/Second");
 		JTextField fs = new JTextField("1", 2);
 		RotoButton selectPhoto = new RotoButton("Select Photos");
