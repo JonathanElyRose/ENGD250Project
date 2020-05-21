@@ -118,11 +118,11 @@ public class VideoManager {
 	}
 	public void makeProgressBar() {
 		frame = new JFrame("Exporting...");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JTextField text = new JTextField();
         text.setEditable(false);
-        text.setText("Progresss:");
+        text.setText("Progress:");
 		
 		progressBar = new JProgressBar(0, 100);
         progressBar.setValue(0);
