@@ -154,6 +154,12 @@ public class NewProjectPanel extends ParentPanel {
 	public boolean checkNameValid() {
 		((JLabel) returnComponent("nameFieldError")).setText("");
 		String fieldValue = ((JTextField) returnComponent("nameField")).getText();
+		
+		if(fieldValue.length() == 0) {
+			((JLabel) returnComponent("nameFieldError")).setText("Error: Missing Project Name");
+			return false;
+		}
+
 		String[] naughtyCharacters = {"!","#","$","%","&","'",",",",","*","+","-",".","/",":",";","<","=",">","?","@","[","]","^","`","{","|","}","~"};
 		for(String naughtyBoi : naughtyCharacters) {
 			if(fieldValue.contains(naughtyBoi)) {

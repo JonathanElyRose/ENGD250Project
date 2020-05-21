@@ -47,6 +47,7 @@ public class ToolbarPanel extends ParentPanel {
 	@Override
 	public void setupComponents() {
 		
+		JLabel fpsErrorMessages = new JLabel("");
 		RotoButton play = new RotoButton("Play");
 		JLabel fsLabel = new JLabel("Frames/Second");
 		JTextField fs = new JTextField("1", 2);
@@ -54,6 +55,7 @@ public class ToolbarPanel extends ParentPanel {
 		RotoButton importPhoto = new RotoButton("Import Photos");
 		RotoButton exportVideo = new RotoButton("Export Animation");
 		
+		addComponent("fpsErrorMessages", fpsErrorMessages);
 		addComponent("play", play);
 		addComponent("fsLabel", fsLabel);
 		addComponent("fs", fs);
@@ -74,7 +76,8 @@ public class ToolbarPanel extends ParentPanel {
 					.addComponent(returnComponent("play"))
 						.addGroup(getLayout().createParallelGroup()
 						.addComponent(returnComponent("fsLabel"))
-						.addComponent(returnComponent("fs")))
+						.addComponent(returnComponent("fs"))
+						.addComponent(returnComponent("fpsErrorMessages")))
 					.addComponent(returnComponent("selectPhoto"))
 					.addComponent(returnComponent("importPhoto"))
 					.addComponent(returnComponent("exportVideo")))
@@ -89,6 +92,7 @@ public class ToolbarPanel extends ParentPanel {
 					.addComponent(returnComponent("selectPhoto"))
 					.addComponent(returnComponent("importPhoto"))
 					.addComponent(returnComponent("exportVideo")))
+				.addComponent(returnComponent("fpsErrorMessages"))
 		);
 
 	}
@@ -155,10 +159,15 @@ public class ToolbarPanel extends ParentPanel {
 	
 	public boolean verifyFPS() {
 		String input = ((JTextField) returnComponent("fs")).getText();
+		if(input.length() == 0) {
+			((JLabel) returnComponent("fpsErrorMessages")).setText("Error: FPS must be a whole number");
+			return false;
+		}
 		boolean output = true;
 		for(int i = 0; i < input.length(); i++) {
 			if(input.charAt(i) < 48 || input.charAt(i) > 57) {
 				output = false;
+				((JLabel) returnComponent("fpsErrorMessages")).setText("Error: FPS must be a whole number");
 			}
 		}
 		return output;

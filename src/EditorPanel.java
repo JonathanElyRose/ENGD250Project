@@ -32,13 +32,13 @@ public class EditorPanel extends ParentPanel {
 		this.scaledWidth = 720;
 		
 		ToolbarPanel toolPanel = new ToolbarPanel(this.getFrame(), this);
-		
+
 		RotoButton previous = new RotoButton("<");
 		RotoButton backFive = new RotoButton("<<");
 		RotoButton next = new RotoButton(">");
 		RotoButton forwardFive = new RotoButton(">>");
 		JLabel picture = getImageAsLabel("Final_Logo.png");
-		
+
 		addComponent("toolPanel", toolPanel);
 		addComponent("previous", previous);
 		addComponent("next", next);
