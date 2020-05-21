@@ -12,6 +12,12 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * This class overrides the JButton class to guarantee that our buttons work how we want.
+ * 
+ * @author Emmi Schwitters
+ */
+
 public class RotoButton extends JButton implements MouseListener {
 
 	private Border outline1;
