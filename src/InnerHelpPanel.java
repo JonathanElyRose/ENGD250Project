@@ -76,6 +76,7 @@ public class InnerHelpPanel extends ParentPanel {
 		icon4 = new ImageIcon( newimg4 );
 		icon5 = new ImageIcon( newimg5 );
 		icon6 = new ImageIcon( newimg6 );
+		
 		JLabel label1 = new JLabel(icon1);
 		JLabel label2 = new JLabel(icon2);
 		JLabel label3 = new JLabel(icon3);
@@ -94,6 +95,9 @@ public class InnerHelpPanel extends ParentPanel {
 		
 	
 		area1.setEditable(false);
+		area2.setEditable(false);
+		area3.setEditable(false);
+		area4.setEditable(false);
 		
 		addComponent("helpTitle", helpTitle);
 		addComponent("area1", area1);

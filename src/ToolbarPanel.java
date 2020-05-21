@@ -1,7 +1,9 @@
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -17,7 +19,9 @@ public class ToolbarPanel extends ParentPanel {
 	private EditorPanel editorPanel;
 	private int fps;
 	private boolean running;
-	Timer timer;
+	private Timer timer;
+	private ImageIcon playIcon;
+	private ImageIcon pause;
 
 	public ToolbarPanel(MainFrame frame, EditorPanel editorPanel) {
 		super(frame);
@@ -42,18 +46,34 @@ public class ToolbarPanel extends ParentPanel {
 			}
 			
 		});
+		
 	}
 
 	@Override
 	public void setupComponents() {
 		
+		playIcon = new ImageIcon("play.png");
+		pause = new ImageIcon("pause.png");
+		
+		java.awt.Image img1 = playIcon.getImage();
+		java.awt.Image img2 = pause.getImage();
+		
+		int iconSize = 20;
+		Image newimg1 = img1.getScaledInstance(iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ;
+		Image newimg2 = img2.getScaledInstance(iconSize, iconSize, java.awt.Image.SCALE_SMOOTH ) ;
+		
+		playIcon = new ImageIcon( newimg1 );
+		pause = new ImageIcon( newimg2 );
+		
 		JLabel fpsErrorMessages = new JLabel("");
-		RotoButton play = new RotoButton("Play");
+		RotoButton play = new RotoButton(playIcon);
 		JLabel fsLabel = new JLabel("Frames/Second");
 		JTextField fs = new JTextField("1", 2);
 		RotoButton selectPhoto = new RotoButton("Select Photos");
 		RotoButton importPhoto = new RotoButton("Import Photos");
 		RotoButton exportVideo = new RotoButton("Export Animation");
+		
+
 		
 		addComponent("fpsErrorMessages", fpsErrorMessages);
 		addComponent("play", play);
@@ -62,6 +82,8 @@ public class ToolbarPanel extends ParentPanel {
 		addComponent("selectPhoto", selectPhoto);
 		addComponent("importPhoto", importPhoto);
 		addComponent("exportVideo", exportVideo);
+		
+		
 
 	}
 
@@ -149,10 +171,12 @@ public class ToolbarPanel extends ParentPanel {
 		this.running = !this.running;
 		if(running) {
 			((RotoButton) returnComponent("play")).setText("Pause");
+			((RotoButton) returnComponent("play")).setIcon(pause);
 			this.timer.start();
 		}
 		else {
 			((RotoButton) returnComponent("play")).setText("Play");
+			((RotoButton) returnComponent("play")).setIcon(playIcon);
 			this.timer.stop();
 		}
 	}
