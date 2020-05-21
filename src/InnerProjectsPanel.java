@@ -39,14 +39,14 @@ public class InnerProjectsPanel extends ParentPanel {
 			RotoButton button = new RotoButton(setupThumbnail(project.getThumbnailPath()));
 			
 			if(project.getName().length() > 8) {
-				button.setText(project.getName().substring(0, 7) + "...");
+				button.setText(project.getName().substring(0, 14) + "...");
 			}
 			else {
 				button.setText(project.getName());
 			}
 			button.setFont(new Font("Arial", Font.PLAIN, 20));
 			button.setHorizontalTextPosition(JButton.CENTER);
-			button.setVerticalTextPosition(JButton.CENTER);
+			button.setVerticalTextPosition(JButton.BOTTOM);
 			addComponent(Integer.toString(i), button);
 			i++;
 			

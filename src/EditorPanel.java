@@ -22,6 +22,8 @@ public class EditorPanel extends ParentPanel {
 	private int scaledWidth;
 	private int numOfImages;
 	private int currentImage;
+	
+	private JLabel[] imageArray;
 
 	public EditorPanel(MainFrame frame) {
 		super(frame);
@@ -161,8 +163,12 @@ public class EditorPanel extends ParentPanel {
 	 */
 	public void loadProject() {
 		this.currentImage = 0;
-		setPicture(getImageAsLabel(project.getImagePath(currentImage)));
 		this.numOfImages = project.getImagesMap().keySet().size();
+		imageArray = new JLabel[numOfImages];
+		for(int i = 0; i < numOfImages; i++) {
+			imageArray[i] = getImageAsLabel(project.getImagePath(i));
+		}
+		setPicture(imageArray[0]);
 	}
 	
 	/**
@@ -171,15 +177,15 @@ public class EditorPanel extends ParentPanel {
 	public void advanceImage(int steps) {
 		if((currentImage + steps <= numOfImages - 1) && (currentImage + steps >= 0)) {
 			currentImage += steps;
-			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+			setPicture(imageArray[currentImage]);
 		}
 		else if(currentImage + steps > numOfImages - 1) {
 			currentImage = (currentImage + steps - 1) - (numOfImages - 1);
-			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+			setPicture(imageArray[currentImage]);
 		}
 		else if(currentImage + steps < 0) {
 			currentImage = (numOfImages) + (currentImage + steps);
-			setPicture(getImageAsLabel(project.getImagePath(currentImage)));
+			setPicture(imageArray[currentImage]);
 		}
 	}
 }
